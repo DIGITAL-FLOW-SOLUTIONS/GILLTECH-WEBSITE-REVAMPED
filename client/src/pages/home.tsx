@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { 
   ArrowRight, 
   Brain, 
-  Map, 
   Database, 
   Target, 
   FlaskConical, 
@@ -13,126 +13,152 @@ import {
   CheckCircle, 
   Star, 
   Lightbulb,
-  Users,
   Trophy,
-  TrendingUp
+  TrendingUp,
+  Play,
+  Shield,
+  Zap,
+  Clock,
+  Award,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [email, setEmail] = useState("");
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const stats = [
-    { number: "200+", label: "Projects Completed" },
-    { number: "15K+", label: "Happy Clients" },
-    { number: "94%", label: "Success Rate" },
-    { number: "330%", label: "ROI Increase" }
+    { number: "200+", label: "Projects Completed", description: "Successful AI implementations across industries" },
+    { number: "15K+", label: "Happy Clients", description: "Satisfied customers worldwide" },
+    { number: "94%", label: "Success Rate", description: "Project completion rate" },
+    { number: "330%", label: "ROI Increase", description: "Average return on investment" }
   ];
 
   const services = [
     {
       icon: Brain,
       title: "AI Strategy",
-      description: "Use AI-driven insights and data analytics to help businesses develop forward-thinking solutions and identify market opportunities.",
-      gradient: "from-orange-500 to-orange-600"
-    },
-    {
-      icon: Map,
-      title: "Digital Roadmap",
-      description: "Comprehensive branding, content marketing, and audience engagement strategies that make businesses stand out in competitive markets.",
-      gradient: "from-blue-800 to-blue-900"
+      description: "Advanced AI solutions for business transformation and competitive advantage.",
     },
     {
       icon: Database,
+      title: "Digital Platforms",
+      description: "Scalable digital platforms for modern enterprises and growth.",
+    },
+    {
+      icon: Shield,
       title: "Content Intelligence",
-      description: "Create personalized, authentic, and immersive brand experiences tailored to modern consumers through data-driven content strategies.",
-      gradient: "from-green-500 to-green-600"
+      description: "Smart content strategies that drive engagement and results.",
     },
     {
       icon: Target,
       title: "Digital Advertising",
-      description: "Through deep behavioral insights and data-driven targeting strategies, we ensure your message reaches the right audience at the right time.",
-      gradient: "from-purple-500 to-purple-600"
+      description: "Performance-driven advertising campaigns with measurable ROI.",
     },
     {
       icon: FlaskConical,
       title: "Innovation Labs",
-      description: "Test, validate, and refine innovative concepts before market launch using advanced market intelligence and trend analysis.",
-      gradient: "from-red-500 to-red-600"
+      description: "Rapid prototyping and product development solutions.",
     },
     {
       icon: BarChart3,
       title: "Data Analytics",
-      description: "Pinpoint your highest-value customer segments and anticipate where market demand is heading through advanced analytics.",
-      gradient: "from-blue-500 to-blue-600"
+      description: "Comprehensive business intelligence and data insights.",
     }
   ];
 
-  const processSteps = [
+  const innovationSteps = [
     {
-      number: "1",
-      title: "Research & Analysis",
-      description: "Conduct comprehensive market research and competitive analysis to identify opportunities and validate concepts through AI-driven insights.",
-      gradient: "from-orange-500 to-orange-600"
+      step: "Step 1",
+      title: "Discovery",
+      description: "We start by understanding your business challenges and identifying opportunities for innovation.",
+      icon: Lightbulb,
+      gradient: "from-orange-400 to-orange-500"
     },
     {
-      number: "2",
-      title: "Strategy Development",
-      description: "Develop comprehensive branding and product strategies that align with market needs and business objectives for maximum impact.",
-      gradient: "from-blue-800 to-blue-900"
+      step: "Step 2", 
+      title: "Strategy",
+      description: "Our team develops a comprehensive strategy tailored to your specific needs and market position.",
+      icon: Target,
+      gradient: "from-orange-400 to-orange-500"
     },
     {
-      number: "3",
-      title: "Design & Prototype",
-      description: "Create compelling designs and prototypes that resonate with target audiences while maintaining brand consistency and user experience.",
-      gradient: "from-green-500 to-green-600"
+      step: "Step 3",
+      title: "Development",
+      description: "We build and test solutions using cutting-edge technology and best practices.",
+      icon: FlaskConical,
+      gradient: "from-orange-400 to-orange-500"
     },
     {
-      number: "4",
-      title: "Testing & Validation",
-      description: "Test and validate solutions through data-driven approaches, ensuring optimal performance before market launch.",
-      gradient: "from-purple-500 to-purple-600"
+      step: "Step 4",
+      title: "Implementation",
+      description: "Seamless deployment with ongoing support to ensure optimal performance.",
+      icon: CheckCircle,
+      gradient: "from-orange-400 to-orange-500"
     },
     {
-      number: "5",
-      title: "Launch & Implementation",
-      description: "Execute strategic launch plans with precision timing and multi-channel approaches for maximum market penetration.",
-      gradient: "from-red-500 to-red-600"
+      step: "Step 5",
+      title: "Optimization",
+      description: "Continuous monitoring and improvement to maximize results and ROI.",
+      icon: TrendingUp,
+      gradient: "from-orange-400 to-orange-500"
     },
     {
-      number: "6",
-      title: "Optimize & Scale",
-      description: "Continuously monitor performance and optimize strategies for sustainable growth and long-term market success.",
-      gradient: "from-blue-500 to-blue-600"
+      step: "Step 6",
+      title: "Scale",
+      description: "Expand successful solutions across your organization for maximum impact.",
+      icon: Trophy,
+      gradient: "from-orange-400 to-orange-500"
     }
   ];
 
   const testimonials = [
     {
       name: "Michael Chen",
-      role: "CEO, TechFlow Solutions",
-      content: "Gill Technologies transformed our brand strategy completely. Their AI-driven insights helped us identify new market opportunities that increased our revenue by 240%.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
+      role: "CEO, TechVision Inc.",
+      content: "Gill Technologies completely transformed our approach to AI implementation. Their strategic insights and cutting-edge solutions helped us achieve remarkable growth and establish ourselves as industry leaders.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 5
     },
     {
       name: "Sarah Johnson",
       role: "Founder, EcoNutrition",
-      content: "The innovation process at Gill Technologies is remarkable. They helped us launch our sustainable food product and achieve international recognition.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b74088b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
+      content: "Working with Gill Technologies was a game-changer. Their innovative process and dedication to excellence helped us launch our sustainable product line and achieve international recognition.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b74088b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 5
     },
     {
       name: "David Rodriguez",
       role: "CMO, Digital Dynamics",
-      content: "Outstanding data analytics and customer insights. Their approach to digital advertising helped us reduce acquisition costs by 45% while doubling our conversion rates.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
+      content: "The data analytics and insights provided by Gill Technologies revolutionized our marketing approach. We saw a 45% reduction in acquisition costs while doubling our conversion rates.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 5
+    },
+    {
+      name: "Lisa Park",
+      role: "CTO, InnovateCorp",
+      content: "Their technical expertise and innovative solutions helped us modernize our entire technology stack. The results exceeded all our expectations and positioned us for future growth.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 5
     }
   ];
 
   const brands = [
-    { name: "Mars", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Mars.png" },
-    { name: "Logitech", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Logitech.png" },
-    { name: "Nike", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Nike-China.png" },
-    { name: "PepsiCo", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/pepsico.png" },
-    { name: "Chick-fil-A", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Chick-fil-A.png" },
-    { name: "BritBox", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/BritBox.png" }
+    { name: "Google", src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+    { name: "Microsoft", src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+    { name: "Netflix", src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg" },
+    { name: "Spotify", src: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" }
   ];
 
   return (
@@ -140,63 +166,89 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-50 to-white py-20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl opacity-60 transform rotate-12"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl opacity-60 transform -rotate-12"></div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="font-poppins font-bold text-5xl lg:text-6xl text-brand-primary leading-tight mb-6">
+            <div className="space-y-8 animate-fade-in-up">
+              <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
                 Transform Your <br />
-                Vision With <br />
-                <span className="text-brand-secondary">AI</span>
+                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                  Digital Future
+                </span> <br />
+                With AI
               </h1>
-              <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                Build impactful brands with cutting-edge innovation and strategic insights. We help businesses tell their stories, launch new products, and engage modern consumers through AI-driven research and data intelligence.
+              
+              <p className="font-inter text-gray-600 text-xl leading-relaxed max-w-lg">
+                Harness advanced technology solutions, strategic insights and market intelligence to unlock your digital potential.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-brand-secondary text-white hover:bg-orange-600 px-8 py-4 rounded-xl font-inter font-semibold">
+
+              {/* Feature list */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <span className="font-inter text-gray-700">Advanced AI-powered market intelligence</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <span className="font-inter text-gray-700">Strategic digital transformation consulting</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
+                  <span className="font-inter text-gray-700">Data-driven innovation solutions</span>
+                </div>
+              </div>
+
+              {/* Email input and button */}
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 font-inter"
+                />
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
                   Get Started
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-4 rounded-xl font-inter font-semibold">
-                  Watch Demo
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern tech workspace with AI elements" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-              <div className="absolute -top-6 -right-6 bg-brand-secondary rounded-2xl p-4 shadow-lg">
-                <Lightbulb className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-brand-primary rounded-2xl p-4 shadow-lg">
-                <Brain className="w-8 h-8 text-white" />
+            
+            {/* Hero image */}
+            <div className="relative animate-fade-in-up animation-delay-300">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                  alt="Digital transformation workspace"
+                  className="rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute -top-6 -left-6 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float">
+                  <Brain className="w-12 h-12 text-orange-500" />
+                </div>
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float animation-delay-1000">
+                  <BarChart3 className="w-12 h-12 text-blue-500" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trusted Companies Section */}
-      <section className="py-16 bg-white">
+      {/* Trusted by brands */}
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="font-inter text-gray-500 uppercase tracking-wide text-sm font-semibold mb-4">
-              Trusted by Industry Leaders
-            </p>
-            <p className="font-inter text-gray-600 text-lg">
-              Trusted by thousands of companies across 50+ countries
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+          <p className="text-center font-inter text-gray-500 text-sm mb-8">Trusted by leading brands</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
             {brands.map((brand, index) => (
-              <div key={index} className="flex justify-center">
+              <div key={index} className="flex justify-center opacity-60 hover:opacity-100 transition-opacity duration-300">
                 <img 
                   src={brand.src} 
                   alt={brand.name} 
-                  className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}
@@ -205,20 +257,26 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-primary to-blue-800">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-spartan font-bold text-4xl text-white mb-4">Our Impact in Numbers</h2>
-            <p className="font-inter text-blue-100 text-lg">Results that speak louder than words</p>
+          <div className="text-center mb-16">
+            <h2 className="font-spartan font-bold text-4xl text-gray-900 mb-4">
+              Our <span className="text-orange-500">Impact</span> in Numbers
+            </h2>
+            <p className="font-inter text-gray-600 text-lg">Results that speak louder than words</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-poppins font-bold text-5xl lg:text-6xl text-brand-secondary mb-2">
-                  {stat.number}
-                </div>
-                <p className="font-inter text-blue-100 font-medium">{stat.label}</p>
-              </div>
+              <Card key={index} className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-gray-50">
+                <CardContent className="p-0">
+                  <div className="font-poppins font-bold text-4xl lg:text-5xl text-orange-500 mb-2">
+                    {stat.number}
+                  </div>
+                  <h3 className="font-inter text-gray-900 font-semibold text-lg mb-2">{stat.label}</h3>
+                  <p className="font-inter text-gray-600 text-sm">{stat.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -228,33 +286,41 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-brand-primary mb-4">
-              Our Digital Services Drive Innovation
+            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-4">
+              Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Digital Services</span> Drive Innovation
             </h2>
             <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
-              We create impact-driven solutions across industries through cutting-edge technology and strategic insights
+              We create impact-driven solutions across industries through cutting-edge technology
             </p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 group">
+              <Card key={index} className="hover:shadow-xl transition-all duration-300 group hover:scale-105 border-0">
                 <CardContent className="p-8">
-                  <div className={`bg-gradient-to-br ${service.gradient} rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6`}>
-                    <service.icon className="w-8 h-8 text-white" />
+                  <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-8 h-8 text-orange-600" />
                   </div>
-                  <h3 className="font-spartan font-bold text-2xl text-brand-primary mb-4">
+                  <h3 className="font-spartan font-bold text-xl text-gray-900 mb-4">
                     {service.title}
                   </h3>
-                  <p className="font-inter text-gray-600 mb-6 leading-relaxed">
+                  <p className="font-inter text-gray-600 mb-6 leading-relaxed text-sm">
                     {service.description}
                   </p>
-                  <button className="font-inter font-semibold text-brand-secondary hover:text-orange-600 transition-colors duration-200 flex items-center">
+                  <button className="font-inter font-semibold text-orange-500 hover:text-orange-600 transition-colors duration-200 flex items-center text-sm">
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </button>
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+              View All Services
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
@@ -264,55 +330,55 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="bg-gradient-to-r from-brand-secondary to-orange-600 rounded-xl p-1 inline-block mb-6">
+              <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-1 inline-block mb-6">
                 <div className="bg-white rounded-lg px-4 py-2">
-                  <span className="font-inter font-semibold text-brand-secondary">Case Study</span>
+                  <span className="font-inter font-semibold text-orange-600">Case Study</span>
                 </div>
               </div>
-              <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-brand-primary mb-6">
+              
+              <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6">
                 How We Helped <br />
-                <span className="text-brand-secondary">TamuBoost</span> <br />
+                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">HealthTech</span> <br />
                 Increase Market Efficiency <br />
-                by 264%
+                by <span className="text-orange-500">264%</span>
               </h2>
+              
               <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                In a bold stride toward nutrition innovation, TamuBoost Clusters earned global recognition as a Top 15 Winner at the prestigious DISH Competition 2024. These wholesome snacks are crafted with locally sourced Kenyan fruits, seeds, and spices.
+                Through AI-powered analytics and strategic digital transformation, we helped HealthTech revolutionize their patient care system and achieve unprecedented growth.
               </p>
+              
               <div className="space-y-4 mb-8">
-                <div className="flex items-center">
-                  <div className="bg-green-100 rounded-full p-2 mr-4">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                  </div>
-                  <span className="font-inter text-gray-700 font-medium">264% increase in market efficiency</span>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                  <span className="font-inter text-gray-700">264% increase in operational efficiency</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="bg-green-100 rounded-full p-2 mr-4">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                  </div>
-                  <span className="font-inter text-gray-700 font-medium">Top 15 Winner at DISH Competition 2024</span>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                  <span className="font-inter text-gray-700">50% reduction in patient wait times</span>
                 </div>
-                <div className="flex items-center">
-                  <div className="bg-green-100 rounded-full p-2 mr-4">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                  </div>
-                  <span className="font-inter text-gray-700 font-medium">Locally sourced sustainable ingredients</span>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                  <span className="font-inter text-gray-700">95% customer satisfaction rating</span>
                 </div>
               </div>
-              <Button className="bg-brand-secondary text-white hover:bg-orange-600 px-8 py-4 rounded-xl font-inter font-semibold">
+              
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
                 Read Full Case Study
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
+            
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional business meeting discussing success metrics" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-              <div className="absolute top-8 right-8 bg-white rounded-xl p-4 shadow-lg">
-                <div className="text-center">
-                  <div className="font-poppins font-bold text-2xl text-brand-secondary">264%</div>
-                  <div className="font-inter text-sm text-gray-600">Efficiency Increase</div>
-                </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                  alt="HealthTech case study"
+                  className="rounded-xl shadow-lg w-full h-auto hover:rotate-1 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-lg">
+                <div className="text-2xl font-bold text-orange-500">264%</div>
+                <div className="text-sm text-gray-600">Efficiency Increase</div>
               </div>
             </div>
           </div>
@@ -323,26 +389,22 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-brand-primary mb-4">
-              Our Innovation Process
+            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-8">
+              Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Innovation</span> Process
             </h2>
-            <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
-              Dream. Build. Grow. - Our systematic approach to transforming ideas into market-leading solutions
-            </p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300">
+            {innovationSteps.map((step, index) => (
+              <Card key={index} className="relative hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 overflow-hidden">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${step.gradient}`}></div>
                 <CardContent className="p-8">
-                  <div className={`bg-gradient-to-br ${step.gradient} rounded-full w-12 h-12 flex items-center justify-center mb-6`}>
-                    <span className="font-spartan font-bold text-white">{step.number}</span>
+                  <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-6">
+                    <step.icon className="w-6 h-6 text-orange-600" />
                   </div>
-                  <h3 className="font-spartan font-bold text-xl text-brand-primary mb-4">
-                    {step.title}
-                  </h3>
-                  <p className="font-inter text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <div className="text-orange-500 font-inter font-semibold text-sm mb-2">{step.step}</div>
+                  <h3 className="font-spartan font-bold text-xl text-gray-900 mb-4">{step.title}</h3>
+                  <p className="font-inter text-gray-600 leading-relaxed text-sm">{step.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -351,65 +413,129 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-brand-primary to-blue-900">
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-white mb-4">
-              What Our Partners Say
+            <h2 className="font-spartan font-bold text-4xl text-white mb-4">
+              What Our <span className="text-orange-500">Partners</span> Say
             </h2>
-            <p className="font-inter text-blue-100 text-lg">
-              Trusted by industry leaders worldwide for innovative solutions
-            </p>
+            <p className="font-inter text-gray-300 text-lg">Trusted by industry leaders worldwide</p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="glass-effect border-white/20">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <div className="flex text-brand-secondary">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-current" />
-                      ))}
+          
+          <div className="relative">
+            <Card className="bg-gray-800 border-gray-700 max-w-4xl mx-auto">
+              <CardContent className="p-12">
+                <div className="flex justify-center mb-6">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 text-orange-500 fill-current" />
+                  ))}
+                </div>
+                
+                <p className="font-inter text-white text-xl leading-relaxed mb-8 text-center">
+                  "{testimonials[currentTestimonial].content}"
+                </p>
+                
+                <div className="flex items-center justify-center">
+                  <img 
+                    src={testimonials[currentTestimonial].image} 
+                    alt={testimonials[currentTestimonial].name} 
+                    className="w-16 h-16 rounded-full mr-4"
+                  />
+                  <div>
+                    <div className="font-inter font-semibold text-white text-lg">
+                      {testimonials[currentTestimonial].name}
+                    </div>
+                    <div className="font-inter text-gray-300">
+                      {testimonials[currentTestimonial].role}
                     </div>
                   </div>
-                  <p className="font-inter text-white/90 text-lg leading-relaxed mb-6">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-12 h-12 rounded-full mr-4"
-                    />
-                    <div>
-                      <div className="font-inter font-semibold text-white">{testimonial.name}</div>
-                      <div className="font-inter text-sm text-blue-100">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Navigation buttons */}
+            <button 
+              onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-3 transition-all duration-300"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            
+            <button 
+              onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full p-3 transition-all duration-300"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+            
+            {/* Dots indicator */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentTestimonial ? 'bg-orange-500' : 'bg-gray-600 hover:bg-gray-500'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-secondary to-orange-600">
+      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-white mb-6">
-            Ready to Transform Your <br />
-            Business With AI Innovation?
+            What's Needed is Your Contribution!
           </h2>
           <p className="font-inter text-orange-100 text-xl mb-10 max-w-3xl mx-auto">
-            Join hundreds of forward-thinking companies who have partnered with Gill Technologies to achieve breakthrough results. Dream. Build. Grow.
+            Ready to Transform Your Business With AI-Powered Solutions?
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button className="bg-white text-brand-secondary hover:bg-gray-100 px-10 py-4 rounded-xl font-inter font-bold">
-              Start Your Project
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto text-left">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">Digital Transformation</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">AI Strategy Implementation</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">Data Analytics Solutions</span>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">Innovation Consulting</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">Market Intelligence</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="font-inter text-white">Business Optimization</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-md mx-auto">
+            <Input 
+              type="email" 
+              placeholder="Enter your email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 font-inter bg-white/10 border-white/20 text-white placeholder-white/70"
+            />
+            <Button className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-3 rounded-lg font-inter font-bold transition-all duration-300 hover:shadow-lg hover:scale-105">
+              Get Started
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-brand-secondary px-10 py-4 rounded-xl font-inter font-bold">
-              Schedule Consultation
             </Button>
           </div>
         </div>
