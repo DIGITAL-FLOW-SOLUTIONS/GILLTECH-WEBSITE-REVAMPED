@@ -24,43 +24,38 @@ export default function Navigation() {
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <div 
-                className="relative"
-                onMouseEnter={() => {
-                  clearTimeout(dropdownTimeout);
-                  setSolutionsDropdownOpen(true);
-                }}
-                onMouseLeave={() => {
-                  dropdownTimeout = setTimeout(() => setSolutionsDropdownOpen(false), 200);
-                }}
-              >
-                <button className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center">
-                  Solutions
-                  <ChevronDown className="ml-1 w-4 h-4" />
-                </button>
-                {solutionsDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
-                    <Link href="/innovation">
-                      <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Innovation</div>
-                    </Link>
-                    <Link href="/brand-strategy">
-                      <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Strategy</div>
-                    </Link>
-                    <Link href="/brand-experience">
-                      <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Experience</div>
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
-              <Link href="/about" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</Link>
+          {/* Desktop Navigation - moved to right side */}
+          <div className="hidden md:flex items-center space-x-4">
+            <div 
+              className="relative"
+              onMouseEnter={() => {
+                clearTimeout(dropdownTimeout);
+                setSolutionsDropdownOpen(true);
+              }}
+              onMouseLeave={() => {
+                dropdownTimeout = setTimeout(() => setSolutionsDropdownOpen(false), 200);
+              }}
+            >
+              <button className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center">
+                Solutions
+                <ChevronDown className="ml-1 w-4 h-4" />
+              </button>
+              {solutionsDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
+                  <Link href="/innovation">
+                    <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Innovation</div>
+                  </Link>
+                  <Link href="/brand-strategy">
+                    <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Strategy</div>
+                  </Link>
+                  <Link href="/brand-experience">
+                    <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Experience</div>
+                  </Link>
+                </div>
+              )}
             </div>
-          </div>
-
-          <div className="hidden md:block">
+            <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
+            <Link href="/about" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</Link>
             <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg">
               Get Started
             </Button>
