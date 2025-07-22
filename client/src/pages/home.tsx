@@ -15,12 +15,14 @@ import {
   Trophy,
   TrendingUp,
   Menu,
-  X
+  X,
+  ChevronDown
 } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
 
   const stats = [
     { number: "200+", label: "Projects Completed" },
@@ -155,11 +157,29 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Home</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Services</a>
+                <div className="relative">
+                  <button 
+                    className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center"
+                    onMouseEnter={() => setSolutionsDropdownOpen(true)}
+                    onMouseLeave={() => setSolutionsDropdownOpen(false)}
+                  >
+                    Solutions
+                    <ChevronDown className="ml-1 w-4 h-4" />
+                  </button>
+                  {solutionsDropdownOpen && (
+                    <div 
+                      className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50"
+                      onMouseEnter={() => setSolutionsDropdownOpen(true)}
+                      onMouseLeave={() => setSolutionsDropdownOpen(false)}
+                    >
+                      <a href="#" className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Innovation</a>
+                      <a href="#" className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Strategy</a>
+                      <a href="#" className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Brand Experience</a>
+                    </div>
+                  )}
+                </div>
+                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
                 <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Innovation</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Contact</a>
               </div>
             </div>
 
@@ -184,11 +204,24 @@ export default function Home() {
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-gray-100 py-4">
               <div className="flex flex-col space-y-4">
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Home</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Services</a>
+                <div>
+                  <button 
+                    className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center w-full text-left"
+                    onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
+                  >
+                    Solutions
+                    <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${solutionsDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {solutionsDropdownOpen && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      <a href="#" className="block font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200">Innovation</a>
+                      <a href="#" className="block font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200">Brand Strategy</a>
+                      <a href="#" className="block font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200">Brand Experience</a>
+                    </div>
+                  )}
+                </div>
+                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
                 <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Innovation</a>
-                <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Contact</a>
                 <Button className="bg-brand-secondary text-white hover:bg-orange-600 font-inter font-semibold w-full mt-4">
                   Get Started
                 </Button>
