@@ -21,7 +21,8 @@ import {
   Clock,
   Award,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Users
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -38,10 +39,10 @@ export default function Home() {
   }, []);
 
   const stats = [
-    { number: "200+", label: "Projects Completed", description: "Successful AI implementations across industries" },
-    { number: "15K+", label: "Happy Clients", description: "Satisfied customers worldwide" },
-    { number: "94%", label: "Success Rate", description: "Project completion rate" },
-    { number: "330%", label: "ROI Increase", description: "Average return on investment" }
+    { number: "200+", label: "Projects Completed", description: "Successful AI implementations across industries", icon: CheckCircle },
+    { number: "15K+", label: "Happy Clients", description: "Satisfied customers worldwide", icon: Users },
+    { number: "94%", label: "Success Rate", description: "Project completion rate", icon: Trophy },
+    { number: "330%", label: "ROI Increase", description: "Average return on investment", icon: TrendingUp }
   ];
 
   const services = [
@@ -158,7 +159,10 @@ export default function Home() {
     { name: "Microsoft", src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
     { name: "Netflix", src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
     { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg" },
-    { name: "Spotify", src: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" }
+    { name: "Spotify", src: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" },
+    { name: "Amazon", src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { name: "Apple", src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+    { name: "Meta", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" }
   ];
 
   return (
@@ -176,7 +180,7 @@ export default function Home() {
             <div className="space-y-8 animate-fade-in-up">
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
                 Transform Your <br />
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">
                   Digital Future
                 </span> <br />
                 With AI
@@ -226,11 +230,25 @@ export default function Home() {
                   alt="Digital transformation workspace"
                   className="rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float">
-                  <Brain className="w-12 h-12 text-orange-500" />
+                <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 animate-float">
+                  <div className="flex items-center space-x-2">
+                    <div className="text-blue-500 text-xs font-semibold">#</div>
+                    <div>
+                      <div className="text-blue-500 text-sm font-semibold">Innovation</div>
+                      <div className="text-blue-500 text-xs">Leader</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float animation-delay-1000">
-                  <BarChart3 className="w-12 h-12 text-blue-500" />
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 animate-float animation-delay-1000">
+                  <div className="flex items-center space-x-2">
+                    <div className="bg-green-100 rounded p-1">
+                      <TrendingUp className="w-4 h-4 text-green-600" />
+                    </div>
+                    <div>
+                      <div className="text-green-600 text-xs">Growth Rate</div>
+                      <div className="text-green-600 text-lg font-bold">87%</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -239,19 +257,21 @@ export default function Home() {
       </section>
 
       {/* Trusted by brands */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center font-inter text-gray-500 text-sm mb-8">Trusted by leading brands</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
-            {brands.map((brand, index) => (
-              <div key={index} className="flex justify-center opacity-60 hover:opacity-100 transition-opacity duration-300">
-                <img 
-                  src={brand.src} 
-                  alt={brand.name} 
-                  className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
+          <div className="relative">
+            <div className="flex animate-scroll space-x-16 items-center">
+              {[...brands, ...brands].map((brand, index) => (
+                <div key={index} className="flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  <img 
+                    src={brand.src} 
+                    alt={brand.name} 
+                    className="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -261,15 +281,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-spartan font-bold text-4xl text-gray-900 mb-4">
-              Our <span className="text-orange-500">Impact</span> in Numbers
+              Our <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">Impact</span> in Numbers
             </h2>
             <p className="font-inter text-gray-600 text-lg">Results that speak louder than words</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <Card key={index} className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-gray-50">
+              <Card key={index} className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 bg-gradient-to-br from-white to-gray-50">
                 <CardContent className="p-0">
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-gray-100 rounded-full p-3">
+                      <stat.icon className="w-6 h-6 text-gray-800" />
+                    </div>
+                  </div>
                   <div className="font-poppins font-bold text-4xl lg:text-5xl text-orange-500 mb-2">
                     {stat.number}
                   </div>
@@ -287,7 +312,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-4">
-              Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Digital Services</span> Drive Innovation
+              Our <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">Digital Services</span> Drive Innovation
             </h2>
             <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
               We create impact-driven solutions across industries through cutting-edge technology
@@ -338,9 +363,9 @@ export default function Home() {
               
               <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6">
                 How We Helped <br />
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">HealthTech</span> <br />
+                <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">HealthTech</span> <br />
                 Increase Market Efficiency <br />
-                by <span className="text-orange-500">264%</span>
+                by <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">264%</span>
               </h2>
               
               <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
@@ -390,14 +415,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-8">
-              Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Innovation</span> Process
+              Our <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">Innovation</span> Process
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {innovationSteps.map((step, index) => (
               <Card key={index} className="relative hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${step.gradient}`}></div>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500"></div>
                 <CardContent className="p-8">
                   <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-6">
                     <step.icon className="w-6 h-6 text-orange-600" />
@@ -417,41 +442,48 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-spartan font-bold text-4xl text-white mb-4">
-              What Our <span className="text-orange-500">Partners</span> Say
+              What Our <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">Partners</span> Say
             </h2>
             <p className="font-inter text-gray-300 text-lg">Trusted by industry leaders worldwide</p>
           </div>
           
-          <div className="relative">
-            <Card className="bg-gray-800 border-gray-700 max-w-4xl mx-auto">
-              <CardContent className="p-12">
-                <div className="flex justify-center mb-6">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-orange-500 fill-current" />
-                  ))}
+          <div className="relative overflow-hidden">
+            <div className="flex transition-transform duration-500 ease-in-out" 
+                 style={{transform: `translateX(-${currentTestimonial * 100}%)`}}>
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="w-full flex-shrink-0">
+                  <Card className="bg-gray-800 border-gray-700 max-w-4xl mx-auto">
+                    <CardContent className="p-12">
+                      <div className="flex justify-center mb-6">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-6 h-6 text-orange-500 fill-current" />
+                        ))}
+                      </div>
+                      
+                      <p className="font-inter text-white text-xl leading-relaxed mb-8 text-center">
+                        "{testimonial.content}"
+                      </p>
+                      
+                      <div className="flex items-center justify-center">
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.name} 
+                          className="w-16 h-16 rounded-full mr-4"
+                        />
+                        <div>
+                          <div className="font-inter font-semibold text-white text-lg">
+                            {testimonial.name}
+                          </div>
+                          <div className="font-inter text-gray-300">
+                            {testimonial.role}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-                
-                <p className="font-inter text-white text-xl leading-relaxed mb-8 text-center">
-                  "{testimonials[currentTestimonial].content}"
-                </p>
-                
-                <div className="flex items-center justify-center">
-                  <img 
-                    src={testimonials[currentTestimonial].image} 
-                    alt={testimonials[currentTestimonial].name} 
-                    className="w-16 h-16 rounded-full mr-4"
-                  />
-                  <div>
-                    <div className="font-inter font-semibold text-white text-lg">
-                      {testimonials[currentTestimonial].name}
-                    </div>
-                    <div className="font-inter text-gray-300">
-                      {testimonials[currentTestimonial].role}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
             
             {/* Navigation buttons */}
             <button 
@@ -485,58 +517,77 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-white mb-6">
-            What's Needed is Your Contribution!
-          </h2>
-          <p className="font-inter text-orange-100 text-xl mb-10 max-w-3xl mx-auto">
-            Ready to Transform Your Business With AI-Powered Solutions?
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto text-left">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">Digital Transformation</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">AI Strategy Implementation</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">Data Analytics Solutions</span>
+      <section className="py-20 bg-gradient-to-r from-orange-400 to-orange-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left side - Main CTA */}
+            <div className="text-white">
+              <h2 className="font-spartan font-bold text-4xl lg:text-5xl mb-6 leading-tight">
+                Ready to Transform Your Business with Advanced Technology?
+              </h2>
+              <p className="font-inter text-orange-100 text-lg mb-8 leading-relaxed">
+                Get your free, no-obligation consultation and discover how we can accelerate your digital innovation journey.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-lg">
+                  Schedule Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-orange-500 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300">
+                  View Case Studies
+                </Button>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">Innovation Consulting</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">Market Intelligence</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-inter text-white">Business Optimization</span>
+            
+            {/* Right side - What's Included */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <h3 className="font-spartan font-bold text-2xl text-white mb-6">
+                What's Included in Your Consultation:
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="bg-white/20 rounded-full p-1 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-inter font-semibold text-white">Digital Assessment</div>
+                    <p className="font-inter text-white/80 text-sm">A comprehensive review of your current technology landscape.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="bg-white/20 rounded-full p-1 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-inter font-semibold text-white">Market Analysis</div>
+                    <p className="font-inter text-white/80 text-sm">See how you compare to industry leaders and competitors.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="bg-white/20 rounded-full p-1 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-inter font-semibold text-white">Innovation Opportunities</div>
+                    <p className="font-inter text-white/80 text-sm">Discover untapped technology opportunities for your business.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="bg-white/20 rounded-full p-1 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-inter font-semibold text-white">Strategic Roadmap</div>
+                    <p className="font-inter text-white/80 text-sm">Get a tailored action plan to accelerate your digital transformation.</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-md mx-auto">
-            <Input 
-              type="email" 
-              placeholder="Enter your email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 font-inter bg-white/10 border-white/20 text-white placeholder-white/70"
-            />
-            <Button className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-3 rounded-lg font-inter font-bold transition-all duration-300 hover:shadow-lg hover:scale-105">
-              Get Started
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
           </div>
         </div>
       </section>
