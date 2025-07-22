@@ -6,6 +6,8 @@ import { Link } from "wouter";
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
+  
+  let dropdownTimeout: NodeJS.Timeout;
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -18,28 +20,29 @@ export default function Navigation() {
                 alt="Gill Technologies Logo" 
                 className="h-8 w-8 mr-2"
               />
-              <span className="font-spartan font-bold text-xl text-brand-primary">GillTech</span>
+              <span className="font-spartan font-bold text-2xl text-brand-primary">GillTech</span>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <div className="relative">
-                <button 
-                  className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center"
-                  onMouseEnter={() => setSolutionsDropdownOpen(true)}
-                  onMouseLeave={() => setSolutionsDropdownOpen(false)}
-                >
+            <div className="ml-10 flex items-baseline space-x-4">
+              <div 
+                className="relative"
+                onMouseEnter={() => {
+                  clearTimeout(dropdownTimeout);
+                  setSolutionsDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  dropdownTimeout = setTimeout(() => setSolutionsDropdownOpen(false), 200);
+                }}
+              >
+                <button className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium flex items-center">
                   Solutions
                   <ChevronDown className="ml-1 w-4 h-4" />
                 </button>
                 {solutionsDropdownOpen && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50"
-                    onMouseEnter={() => setSolutionsDropdownOpen(true)}
-                    onMouseLeave={() => setSolutionsDropdownOpen(false)}
-                  >
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
                     <Link href="/innovation">
                       <div className="block px-4 py-2 font-inter text-gray-600 hover:text-brand-primary hover:bg-gray-50 transition-colors duration-200">Innovation</div>
                     </Link>
@@ -58,7 +61,7 @@ export default function Navigation() {
           </div>
 
           <div className="hidden md:block">
-            <Button className="bg-brand-secondary text-white hover:bg-orange-600 font-inter font-semibold">
+            <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg">
               Get Started
             </Button>
           </div>
@@ -102,7 +105,7 @@ export default function Navigation() {
               </div>
               <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
               <Link href="/about" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</Link>
-              <Button className="bg-brand-secondary text-white hover:bg-orange-600 font-inter font-semibold w-full mt-4">
+              <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg w-full mt-4">
                 Get Started
               </Button>
             </div>

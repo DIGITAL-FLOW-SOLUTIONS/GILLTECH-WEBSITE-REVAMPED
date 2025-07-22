@@ -534,7 +534,7 @@ export default function Home() {
                   Schedule Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-orange-500 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300">
+                <Button variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-orange-500 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300">
                   View Case Studies
                 </Button>
               </div>
