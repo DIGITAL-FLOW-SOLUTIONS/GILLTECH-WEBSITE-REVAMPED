@@ -27,21 +27,19 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">AI Strategy</a></li>
               <li><Link href="/brand-strategy" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Brand Strategy</Link></li>
-              <li><Link href="/innovation" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Innovation Labs</Link></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Data Analytics</a></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Digital Advertising</a></li>
+              <li><Link href="/innovation" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Innovation</Link></li>
+              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Brand Experience</a></li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Links */}
           <div>
-            <h3 className="font-spartan font-bold text-lg text-white mb-6">Company</h3>
+            <h3 className="font-spartan font-bold text-lg text-white mb-6">Quick Links</h3>
             <ul className="space-y-4">
               <li><Link href="/about" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">About Us</Link></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Our Team</a></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Careers</a></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Contact</a></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Blog</a></li>
+              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Privacy Policy</a></li>
+              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Terms of Service</a></li>
+              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Cookie Policy</a></li>
             </ul>
           </div>
         </div>
@@ -49,14 +47,25 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="font-inter text-gray-400 text-sm">
-              © 2024 Gill Technologies. All rights reserved.
+           <p className="font-inter text-gray-400 text-sm">
+              © {new Date().getFullYear()} Gill Technologies. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="font-inter text-gray-400 hover:text-brand-secondary text-sm transition-colors duration-200">Privacy Policy</a>
-              <a href="#" className="font-inter text-gray-400 hover:text-brand-secondary text-sm transition-colors duration-200">Terms of Service</a>
-              <a href="#" className="font-inter text-gray-400 hover:text-brand-secondary text-sm transition-colors duration-200">Cookie Policy</a>
+             <div className="flex items-center mt-4">
+             <a href="https://www.digitalflwsolutions.com/" 
+                className="font-inter text-gray-400 hover:text-brand-secondary text-sm flex items-center">
+  <span>
+    Design made by
+  </span>
+  <img 
+    src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/logo_dfs.png" 
+    alt="Digital Flow Solutions Logo" 
+    className="h-5 w-30 ml-3"
+  />
+</a>
+
             </div>
+
+
           </div>
         </div>
       </div>

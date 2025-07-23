@@ -47,29 +47,29 @@ export default function Home() {
 
   const services = [
     {
-      icon: Brain,
-      title: "AI Strategy",
-      description: "Advanced AI solutions for business transformation and competitive advantage.",
+      icon: Lightbulb,
+      title: "Innovation",
+      description: "Test, validate, and refine innovative concepts before market launch.",
     },
     {
-      icon: Database,
-      title: "Digital Platforms",
-      description: "Scalable digital platforms for modern enterprises and growth.",
+      icon: Award,
+      title: "Brand Experience",
+      description: "Integrate digital storytelling techniques to build strong customer relationships.",
     },
     {
       icon: Shield,
-      title: "Content Intelligence",
-      description: "Smart content strategies that drive engagement and results.",
+      title: "Brand Strategy",
+      description: "Use data-driven content strategies to amplify brand visibility and influence.",
     },
     {
       icon: Target,
       title: "Digital Advertising",
       description: "Performance-driven advertising campaigns with measurable ROI.",
     },
-    {
-      icon: FlaskConical,
-      title: "Innovation Labs",
-      description: "Rapid prototyping and product development solutions.",
+     {
+      icon: Brain,
+      title: "AI Strategy",
+      description: "Advanced AI solutions for business transformation and competitive advantage.",
     },
     {
       icon: BarChart3,
@@ -125,44 +125,44 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: "Michael Chen",
-      role: "CEO, TechVision Inc.",
-      content: "Gill Technologies completely transformed our approach to AI implementation. Their strategic insights and cutting-edge solutions helped us achieve remarkable growth and establish ourselves as industry leaders.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      name: "Senior Strategist",
+      role: "PepsiCo.",
+      content: "Gill Technologies’ team was available 24/7, adapting to our needs and timelines. Their flexibility and speed made our collaboration seamless.",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/testimonial/pepsico.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
       rating: 5
     },
     {
-      name: "Sarah Johnson",
-      role: "Founder, EcoNutrition",
-      content: "Working with Gill Technologies was a game-changer. Their innovative process and dedication to excellence helped us launch our sustainable product line and achieve international recognition.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b74088b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      name: "Digital Innovation Officer",
+      role: "Liberty Insurance",
+      content: "We saw a 40% increase in customer engagement thanks to Gill’s data-driven marketing models. They understand how to make technology drive business results.",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/testimonial/Liberty-Insurance.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 4
+    },
+    {
+      name: "Brand Manager",
+      role: "Ricola Candies",
+      content: "Gill Technologies helped us launch a powerful campaign that deeply resonated with our target market. The team brought energy, creativity, and results.",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/testimonial/Ricola-Candies.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
       rating: 5
     },
     {
-      name: "David Rodriguez",
-      role: "CMO, Digital Dynamics",
-      content: "The data analytics and insights provided by Gill Technologies revolutionized our marketing approach. We saw a 45% reduction in acquisition costs while doubling our conversion rates.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
-      rating: 5
-    },
-    {
-      name: "Lisa Park",
-      role: "CTO, InnovateCorp",
-      content: "Their technical expertise and innovative solutions helped us modernize our entire technology stack. The results exceeded all our expectations and positioned us for future growth.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
-      rating: 5
+      name: "Marketing Lead",
+      role: "Nike China",
+      content: "Their data insights and campaign execution brought a measurable uplift in our brand interaction across China. Truly professional and innovative team.",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/testimonial/Nike-China.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      rating: 4
     }
   ];
 
   const brands = [
-    { name: "Google", src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-    { name: "Microsoft", src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
-    { name: "Netflix", src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
-    { name: "Adobe", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg" },
-    { name: "Spotify", src: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" },
-    { name: "Amazon", src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-    { name: "Apple", src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
-    { name: "Meta", src: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" }
+    { name: "Ricola", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Ricola-Candies.png" },
+    { name: "Logitech", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Logitech.png" },
+    { name: "Burlington", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Burlington.png" },
+    { name: "Adtalem", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Adtalem.png" },
+    { name: "Liberty-Insurance", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Liberty-Insurance.png" },
+    { name: "Mars", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Mars.png" },
+    { name: "Nike-China", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Nike-China.png" },
+    { name: "pepsico", src: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/pepsico.png" }
   ];
 
   return (
@@ -179,17 +179,15 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
-                Transform Your <br />
+                Transforming Ideas into
                 <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">
-                  Digital Future
+                  Digital Excellence
                 </span> <br />
-                With AI
-              </h1>
-              
+                with AI
+              </h1>              
               <p className="font-inter text-gray-600 text-xl leading-relaxed max-w-lg">
-                Harness advanced technology solutions, strategic insights and market intelligence to unlock your digital potential.
+                We blend innovation, experience, and strategic thinking to create breakthrough solutions that drive your business forward in the digital age.
               </p>
-
               {/* Feature list */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
@@ -210,7 +208,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 max-w-md">
                 <Input 
                   type="email" 
-                  placeholder="Enter your email" 
+                  placeholder="Enter your business email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 font-inter"
@@ -226,7 +224,7 @@ export default function Home() {
             <div className="relative animate-fade-in-up animation-delay-300">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                  src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/experience-second-Solution-1.avif?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                   alt="Digital transformation workspace"
                   className="rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500"
                 />
@@ -355,35 +353,35 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-1 inline-block mb-6">
+              <div className="bg-gradient-to-r from-orange-200 to-orange-200 rounded-xl p-1 inline-block mb-6">
                 <div className="bg-white rounded-lg px-4 py-2">
                   <span className="font-inter font-semibold text-orange-600">Case Study</span>
                 </div>
               </div>
               
               <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6">
-                How We Helped <br />
-                <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">HealthTech</span> <br />
-                Increase Market Efficiency <br />
-                by <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">264%</span>
+                How we helped 
+                <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> BRANDS</span> <br />
+                increase market efficiency 
+                by <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> 264%</span>
               </h2>
               
               <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                Through AI-powered analytics and strategic digital transformation, we helped HealthTech revolutionize their patient care system and achieve unprecedented growth.
+                By leveraging AI-driven insights and leading digital transformation strategies, we empowered multiple brands to streamline operations, make smarter decisions, and scale faster in dynamic markets.
               </p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="font-inter text-gray-700">264% increase in operational efficiency</span>
+                  <span className="font-inter text-gray-700">Achieved a 264% boost in overall operational efficiency</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="font-inter text-gray-700">50% reduction in patient wait times</span>
+                  <span className="font-inter text-gray-700">Cut process delays by over 50% across industries</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="font-inter text-gray-700">95% customer satisfaction rating</span>
+                  <span className="font-inter text-gray-700">Elevated customer satisfaction rates to as high as 95%</span>
                 </div>
               </div>
               
@@ -396,8 +394,8 @@ export default function Home() {
             <div className="relative">
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8">
                 <img 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
-                  alt="HealthTech case study"
+                  src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/ilustration/Frame%20214.avif?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                  alt="Brands case study"
                   className="rounded-xl shadow-lg w-full h-auto hover:rotate-1 transition-transform duration-500"
                 />
               </div>
@@ -523,7 +521,7 @@ export default function Home() {
             {/* Left side - Main CTA */}
             <div className="text-white">
               <h2 className="font-spartan font-bold text-4xl lg:text-5xl mb-6 leading-tight">
-                Ready to Transform Your Business with Advanced Technology?
+                Ready to Transform Your Business with Advanced Insights?
               </h2>
               <p className="font-inter text-orange-100 text-lg mb-8 leading-relaxed">
                 Get your free, no-obligation consultation and discover how we can accelerate your digital innovation journey.
