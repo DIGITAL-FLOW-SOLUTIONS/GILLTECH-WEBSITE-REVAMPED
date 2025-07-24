@@ -179,9 +179,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
-                Transforming Ideas into
-                <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent">
-                  Digital Excellence
+                Transforming Ideas into <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> Digital Excellence
                 </span> <br />
                 with AI
               </h1>              
@@ -363,17 +361,17 @@ export default function Home() {
                 How we helped 
                 <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> BRANDS</span> <br />
                 increase market efficiency 
-                by <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> 264%</span>
+                by <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> 85%</span>
               </h2>
               
               <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                By leveraging AI-driven insights and leading digital transformation strategies, we empowered multiple brands to streamline operations, make smarter decisions, and scale faster in dynamic markets.
+                By intergrating AI-driven insights and leading digital transformation strategies, we empowered multiple brands to streamline operations, make smarter decisions, and scale faster in dynamic markets.
               </p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="font-inter text-gray-700">Achieved a 264% boost in overall operational efficiency</span>
+                  <span className="font-inter text-gray-700">Achieved a 85% boost in overall operational efficiency</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
@@ -400,7 +398,7 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-lg">
-                <div className="text-2xl font-bold text-orange-500">264%</div>
+                <div className="text-2xl font-bold text-orange-500">85%</div>
                 <div className="text-sm text-gray-600">Efficiency Increase</div>
               </div>
             </div>
