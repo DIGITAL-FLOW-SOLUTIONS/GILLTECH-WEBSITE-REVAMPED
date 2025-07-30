@@ -54,7 +54,7 @@ export default function Footer() {
              <a href="https://www.digitalflwsolutions.com/" 
                 className="font-inter text-gray-400 hover:text-brand-secondary text-sm flex items-center">
   <span>
-    Design made by
+    Developed by
   </span>
   <img 
     src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/logo_dfs.png" 
