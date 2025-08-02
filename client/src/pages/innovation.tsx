@@ -404,7 +404,7 @@ export default function Innovation() {
               Developing and Testing Product Ideas
             </h2>
             <p className="font-inter text-xl text-gray-600 max-w-4xl mx-auto">
-              Real Innovation Is Built, Not Just Imagined. At Gill Technologies, we don't just think—we build, test, and iterate.
+              Real Innovation Is Built, Not Just Imagined. At Gill Technologies we build, test, and iterate.
             </p>
           </div>
 
@@ -449,7 +449,7 @@ export default function Innovation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-blue mb-6">
             Ready to Lead with <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent animate-pulse"> Innovation </span>?</h2>
-          <p className="font-inter text-blue-400 text-xl mb-10 max-w-3xl mx-auto">
+          <p className="font-inter text-gray-600 text-xl mb-10 max-w-3xl mx-auto">
             Get in Touch for Innovation Solutions and transform your business with cutting-edge technology and strategic insights.
           </p>
           <Button className="bg-brand-secondary text-white hover:bg-orange-600 px-10 py-4 rounded-xl font-inter font-bold">
