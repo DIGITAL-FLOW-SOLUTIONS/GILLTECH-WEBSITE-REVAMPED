@@ -86,7 +86,7 @@ export default function Innovation() {
                 <div className="bg-orange-100 p-2 rounded-lg mr-3 group-hover:rotate-12 transition-transform duration-300">
                   <Lightbulb className="w-6 h-6 text-orange-500" />
                 </div>
-                <span className="font-inter text-orange-500 font-semibold tracking-wide">INNOVATION</span>
+                <span className="font-inter text-orange-500 font-semibold tracking-wide">Innovation</span>
               </div>
               
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
@@ -99,7 +99,7 @@ export default function Innovation() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
-                  Start Your Innovation Journey
+                  Start Started
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">

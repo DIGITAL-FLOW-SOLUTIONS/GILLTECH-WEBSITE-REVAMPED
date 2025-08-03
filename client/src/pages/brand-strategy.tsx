@@ -18,7 +18,6 @@ import {
   Award,
   Lightbulb,
   Globe,
-  Play,
   Rocket,
   Brain,
   Sparkles,
@@ -185,31 +184,31 @@ export default function BrandStrategy() {
 
   const testimonials = [
     {
-      name: "Sarah Mitchell",
-      role: "CMO, TechCorp Global",
+      name: "CEO",
+      role: "Burlington",
       content:
         "Gill Technologies completely revolutionized our brand strategy. Their data-driven approach and creative excellence helped us achieve 300% growth in brand recognition within 18 months.",
-      avatar: "/placeholder.svg?height=60&width=60&text=SM",
+      avatar: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Burlington.png?height=60&width=60&text=SM",
       rating: 5,
-      company: "TechCorp",
+      company: "Burlington",
     },
     {
-      name: "David Chen",
-      role: "Founder, InnovateLab",
+      name: "CEO",
+      role: "Ricola Candies",
       content:
         "The strategic insights and creative execution exceeded our expectations. They didn't just rebrand us – they repositioned us as industry leaders.",
-      avatar: "/placeholder.svg?height=60&width=60&text=DC",
+      avatar: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Ricola-Candies.png?height=60&width=60&text=DC",
       rating: 5,
-      company: "InnovateLab",
+      company: "Ricola Candies",
     },
     {
-      name: "Maria Rodriguez",
-      role: "VP Marketing, RetailMax",
+      name: "BritBox",
+      role: "VP Marketing, BritBox",
       content:
         "Working with Gill Technologies was transformative. Their comprehensive approach helped us build a brand that truly connects with our customers and drives measurable business growth.",
-      avatar: "/placeholder.svg?height=60&width=60&text=MR",
+      avatar: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/BritBox.png?height=60&width=60&text=MR",
       rating: 5,
-      company: "RetailMax",
+      company: "BritBox",
     },
   ]
 
@@ -218,7 +217,7 @@ export default function BrandStrategy() {
       title: "Fortune 500 Digital Transformation",
       category: "Brand Repositioning",
       description: "Complete brand overhaul resulting in 40% increase in market share and $50M revenue growth.",
-      image: "/placeholder.svg?height=300&width=400&text=Case+Study+1",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/hero/brand-strategy-hero.avif?height=300&width=400&text=Case+Study+1",
       results: ["40% Market Share Increase", "$50M Revenue Growth", "85% Brand Recognition Lift"],
       industry: "Technology",
     },
@@ -226,7 +225,7 @@ export default function BrandStrategy() {
       title: "Startup to Unicorn Journey",
       category: "Brand Building",
       description: "Strategic brand development that supported Series A to Unicorn status in 24 months.",
-      image: "/placeholder.svg?height=300&width=400&text=Case+Study+2",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/hero/experience-hero.avif?height=300&width=400&text=Case+Study+2",
       results: ["Unicorn Valuation", "500% User Growth", "Global Market Entry"],
       industry: "FinTech",
     },
@@ -234,7 +233,7 @@ export default function BrandStrategy() {
       title: "Retail Brand Renaissance",
       category: "Brand Revitalization",
       description: "Heritage brand modernization that increased customer loyalty by 60% and sales by 35%.",
-      image: "/placeholder.svg?height=300&width=400&text=Case+Study+3",
+      image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/image-three.avif?height=300&width=400&text=Case+Study+3",
       results: ["60% Loyalty Increase", "35% Sales Growth", "Award-Winning Campaign"],
       industry: "Retail",
     },
@@ -244,91 +243,189 @@ export default function BrandStrategy() {
     <div className="min-h-screen bg-white" ref={containerRef}>
       <Navigation />
 
-      {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl"
-            animate={{
-              scale: [1.2, 1, 1.2],
-              opacity: [0.4, 0.7, 0.4],
-            }}
-            transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
-          />
-        </div>
+      {/* Hero Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+              <div className="bg-orange-100 p-2 rounded-lg mr-3 group-hover:rotate-12 transition-transform duration-300">
+                <span className="font-inter text-orange-500 font-semibold">Brand Strategy</span>
+                
+              </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            <motion.div
-              className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Sparkles className="w-5 h-5 text-orange-400 mr-2" />
-              <span className="text-white font-medium">Award-Winning Brand Strategy</span>
+              <h1 className="font-bold text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6 text-gray-900">
+                Building a strong brand starts with a <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent animate-pulse"> clear</span> strategy 
+              </h1>
+
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-lg">
+              Whether you're launching something new or refining your brand, having a well-defined plan ensures consistency, builds trust, and sets you apart from the competition.          
+                  </p>
+
+               <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                  Start Started
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
+                  Get a Quote
+                </Button>
+              </div>
             </motion.div>
 
-            <h1 className="font-bold text-6xl lg:text-8xl leading-tight mb-8 text-white">
-              Transform Your
-              <span className="block bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                Brand Story
-              </span>
-            </h1>
+            {/* Right Content */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="relative rounded-2xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                  alt="Team working together"
+                  className="w-full h-auto rounded-2xl"
+                />
 
-            <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-              We craft extraordinary brand experiences that captivate audiences, drive growth, and create lasting impact
-              in the digital age.
-            </p>
+                {/* Overlay Card */}
+                <div className="absolute top-6 left-6 bg-white rounded-2xl p-6 shadow-xl max-w-sm">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">
+                    Creating Impactful Brand Strategy for Your Business!
+                  </h3>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-10 py-6 text-lg rounded-2xl shadow-2xl">
-                  Start Your Journey
-                  <ArrowRight className="ml-2 w-6 h-6" />
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-10 py-6 text-lg rounded-2xl bg-transparent"
-                >
-                  <Play className="mr-2 w-6 h-6" />
-                  Watch Our Story
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
+                  <div className="flex items-center mb-3">
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                  </div>
 
-          {/* Floating Stats */}
-          <motion.div
-            className="absolute bottom-20 left-1/2 transform -translate-x-1/2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="flex space-x-8 bg-white/10 backdrop-blur-md rounded-2xl p-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">300+</div>
-                <div className="text-sm text-gray-300">Brands Transformed</div>
+                  <div className="flex items-center mb-3">
+                    <span className="font-bold text-4xl text-gray-900 mr-3">9.6</span>
+                    <div>
+                      <p className="text-sm text-gray-600">Success Rate</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center mb-4">
+  <div className="flex -space-x-2 mr-3">
+     <div className="w-11 h-11 rounded-full bg-white border-2 border-white flex items-center justify-center shadow-sm">
+      <img 
+        src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/Mars.png" 
+        alt="Mars" 
+        className="w-10 h-10 object-contain"
+      />
+    </div>    
+    <div className="w-11 h-11 rounded-full bg-white border-2 border-white flex items-center justify-center shadow-sm">
+      <img 
+        src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/BritBox.png" 
+        alt="BritBox" 
+        className="w-10 h-10 object-contain"
+      />
+    </div> 
+    <div className="w-11 h-11 rounded-full bg-white border-2 border-white flex items-center justify-center shadow-sm">
+      <img 
+        src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/brand/pepsico.png" 
+        alt="PepsiCo" 
+        className="w-10 h-10 object-contain"
+      />
+    </div>  
+  </div>
+  <span className="text-sm font-medium text-gray-700">Our Client Active</span>
+</div>
+                </div>
+
+                {/* Bottom Green Button */}
+                <div className="absolute bottom-6 right-6">
+                  <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg w-full mt-4">
+                    Join the Future of Branding
+                  </Button>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">25+</div>
-                <div className="text-sm text-gray-300">Years Experience</div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+       {/* Growth & Success Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            {/* Left Card - Takes 2 columns */}
+            <motion.div
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="bg-gradient-to-r from-orange-500 to-blue-500 text-white rounded-2xl p-8 flex flex-col lg:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <img
+                    src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/image-four.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
+                    alt="Team collaboration"
+                    className="rounded-xl w-full lg:w-64 h-48 object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-white">
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+                    Branding is simply, brand recognition
+                  </h3>
+                  <p className="mb-6 leading-relaxed">
+                    We craft compelling campaigns through classic media, building brand recognition, trust, and visibility that stand the test of time.
+                  </p>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white">98%</div>
-                <div className="text-sm text-gray-300">Success Rate</div>
+            </motion.div>
+
+            {/* Right Section - Takes 1 column */}
+            <motion.div
+              className="lg:col-span-1"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-center lg:text-left">
+                <div className="flex justify-center lg:justify-start mb-4">
+                  <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center text-lg-start">
+                    <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg-end text-2xl font-bold text-gray-900 mb-4 mb-lg-4">Success Our Priority</h3>
+                </div>
+                
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  We Provide Brilliant Ideas & adding The World Called Sucess To Your Brand
+                </p>
+
+                {/* Statistics Card */}
+                <div className="bg-gradient-to-r from-orange-500 to-blue-500 text-white rounded-2xl p-6">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl lg:text-3xl font-bold text-white-900 mb-1">92%</div>
+                      <div className="text-xs lg:text-sm font-medium text-white-700">Branding Startegy</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl lg:text-3xl font-bold text-white-900 mb-1">90%</div>
+                      <div className="text-xs lg:text-sm font-medium text-white-700">Brand Conslutant</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl lg:text-3xl font-bold text-white-900 mb-1">87%</div>
+                      <div className="text-xs lg:text-sm font-medium text-white-700">Brand Recognition</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -379,7 +476,7 @@ export default function BrandStrategy() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Comprehensive Brand Solutions</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6">Comprehensive Brand <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent animate-pulse"> Solutions</span></h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               From strategy to execution, we deliver end-to-end brand solutions that drive measurable business growth
             </p>
@@ -403,25 +500,21 @@ export default function BrandStrategy() {
                     >
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
+                    <h3 
+                    className={`text-2xl font-bold text-gray-900 mb-4 group-hover:${service.gradient} transition-colors`}
+                    >
                       {service.title}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed flex-grow">{service.description}</p>
                     <ul className="space-y-3 mb-8">
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center text-gray-700">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                          <CheckCircle className={`w-5 h-5 text-green-500 group-hover:${service.gradient} mr-3 flex-shrink-0`} />
                           <span className="text-sm font-medium">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button
-                      variant="outline"
-                      className="w-full border-2 group-hover:border-purple-500 group-hover:text-purple-500 transition-colors mt-auto bg-transparent"
-                    >
-                      Learn More
-                      <ArrowUpRight className="ml-2 w-4 h-4" />
-                    </Button>
+                   
                   </CardContent>
                 </Card>
               </motion.div>
@@ -462,9 +555,6 @@ export default function BrandStrategy() {
                 viewport={{ once: true }}
               >
                 <div className="relative mb-8">
-                  <div className="bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto text-2xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {step.step}
-                  </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 inline-block group-hover:bg-white/20 transition-colors duration-300">
                     <step.icon className="w-8 h-8 text-orange-400" />
                   </div>
@@ -492,7 +582,7 @@ export default function BrandStrategy() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Success Stories That Inspire</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6">Success <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent animate-pulse"> Stories</span> That Inspire</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Real results, measurable impact, and transformative brand growth across industries
             </p>
@@ -602,7 +692,7 @@ export default function BrandStrategy() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">Client Success Stories</h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6">Client Success <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent animate-pulse"> Stories</span></h2>
             <p className="text-xl text-gray-600">Hear from leaders who've transformed their brands with us</p>
           </motion.div>
 
@@ -669,10 +759,7 @@ export default function BrandStrategy() {
             viewport={{ once: true }}
           >
             <h2 className="text-5xl lg:text-6xl font-bold mb-8">
-              Ready to Transform
-              <span className="block bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
-                Your Brand?
-              </span>
+              Ready to Transform Your Brand?
             </h2>
             <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Join hundreds of successful brands who've partnered with us to create extraordinary brand experiences that
