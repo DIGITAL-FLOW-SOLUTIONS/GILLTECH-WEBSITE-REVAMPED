@@ -179,7 +179,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
-                Transforming Ideas into <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> Digital Excellence
+                Transforming <span className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-500 bg-clip-text text-transparent"> Digital Excellence
                 </span> <br />
                 with AI
               </h1>              
@@ -392,7 +392,7 @@ export default function Home() {
             <div className="relative">
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8">
                 <img 
-                  src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/ilustration/Frame%20214.avif?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                  src="https://images.unsplash.com/photo-1584254520678-31fe4dce5306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
                   alt="Brands case study"
                   className="rounded-xl shadow-lg w-full h-auto hover:rotate-1 transition-transform duration-500"
                 />

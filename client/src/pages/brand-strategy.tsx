@@ -75,7 +75,7 @@ export default function BrandStrategy() {
       description:
         "Comprehensive strategic foundation that defines your brand's unique position in the market and creates lasting competitive advantage.",
       icon: Target,
-      gradient: "from-blue-500 to-cyan-400",
+      gradient: "from-blue-500 to-orange-400",
       features: [
         "Market Research & Analysis",
         "Competitive Intelligence",
@@ -88,7 +88,7 @@ export default function BrandStrategy() {
       description:
         "Complete visual identity systems that capture your brand essence and create memorable experiences across all touchpoints.",
       icon: Palette,
-      gradient: "from-purple-500 to-pink-400",
+      gradient: "from-orange-500 to-blue-400",
       features: [
         "Logo & Visual Identity",
         "Brand Guidelines Creation",
@@ -101,7 +101,7 @@ export default function BrandStrategy() {
       description:
         "Authentic brand voice development and strategic messaging frameworks that resonate with your target audience.",
       icon: MessageCircle,
-      gradient: "from-green-500 to-emerald-400",
+      gradient: "from-blue-500 to-orange-400",
       features: ["Brand Voice Development", "Messaging Architecture", "Content Strategy", "Copywriting Excellence"],
     },
     {
@@ -109,7 +109,7 @@ export default function BrandStrategy() {
       description:
         "Comprehensive digital brand presence that ensures consistency and impact across all online platforms.",
       icon: Globe,
-      gradient: "from-orange-500 to-red-400",
+      gradient: "from-orange-500 to-blue-400",
       features: [
         "Digital Brand Guidelines",
         "Website Brand Integration",
@@ -122,14 +122,14 @@ export default function BrandStrategy() {
       description:
         "Forward-thinking brand strategies that drive innovation and sustainable growth in evolving markets.",
       icon: Rocket,
-      gradient: "from-indigo-500 to-blue-400",
+      gradient: "from-lue-500 to-orange-400",
       features: ["Innovation Strategy", "Growth Planning", "Market Expansion", "Future-Proofing"],
     },
     {
       title: "Brand Performance Analytics",
       description: "Data-driven insights and performance measurement to optimize brand strategy and maximize ROI.",
       icon: BarChart3,
-      gradient: "from-teal-500 to-cyan-400",
+      gradient: "from-orange-500 to-blue-400",
       features: ["Brand Health Tracking", "Performance Analytics", "ROI Measurement", "Strategic Optimization"],
     },
   ]
@@ -167,19 +167,19 @@ export default function BrandStrategy() {
 
   const achievements = [
     {
-      number: "300+",
+      number: "100+",
       label: "Brands Transformed",
       description: "Successful brand transformations worldwide",
       icon: Award,
     },
     {
-      number: "98%",
+      number: "85%",
       label: "Client Satisfaction",
       description: "Exceptional results and partnerships",
       icon: ThumbsUp,
     },
-    { number: "25+", label: "Years Experience", description: "Decades of proven expertise", icon: Clock },
-    { number: "150M+", label: "Brand Reach", description: "Global audience impact", icon: Globe },
+    { number: "3+", label: "Years Experience", description: "Decades of proven expertise", icon: Clock },
+    { number: "100+", label: "Brand Reach", description: "Global audience impact", icon: Globe },
   ]
 
   const testimonials = [
@@ -218,7 +218,7 @@ export default function BrandStrategy() {
       category: "Brand Repositioning",
       description: "Complete brand overhaul resulting in 40% increase in market share and $50M revenue growth.",
       image: "https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/hero/brand-strategy-hero.avif?height=300&width=400&text=Case+Study+1",
-      results: ["40% Market Share Increase", "$50M Revenue Growth", "85% Brand Recognition Lift"],
+      results: ["20% Market Share Increase", "$10M Revenue Growth", "65% Brand Recognition Lift"],
       industry: "Technology",
     },
     {
@@ -249,9 +249,12 @@ export default function BrandStrategy() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="bg-orange-100 p-2 rounded-lg mr-3 group-hover:rotate-12 transition-transform duration-300">
-                <span className="font-inter text-orange-500 font-semibold">Brand Strategy</span>
-                
+              
+               <div className="flex items-center mb-6 group">
+                <div className="bg-orange-100 p-2 rounded-lg mr-3 group-hover:rotate-12 transition-transform duration-300">
+                  <Target className="w-6 h-6 text-orange-500" />
+                </div>
+                <span className="font-inter text-orange-500 font-semibold tracking-wide">Brand Strategy</span>
               </div>
 
               <h1 className="font-bold text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6 text-gray-900">
@@ -363,7 +366,7 @@ export default function BrandStrategy() {
               <div className="bg-gradient-to-r from-orange-500 to-blue-500 text-white rounded-2xl p-8 flex flex-col lg:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
                   <img
-                    src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/image-four.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
+                    src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/hero-experience-2.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
                     alt="Team collaboration"
                     className="rounded-xl w-full lg:w-64 h-48 object-cover"
                   />
@@ -563,7 +566,7 @@ export default function BrandStrategy() {
                 <p className="text-gray-300 leading-relaxed">{step.description}</p>
                 {index < process.length - 1 && (
                   <div className="hidden lg:block absolute top-10 left-full w-full">
-                    <ArrowRight className="w-6 h-6 text-gray-400 mx-auto" />
+                    
                   </div>
                 )}
               </motion.div>
@@ -642,7 +645,7 @@ export default function BrandStrategy() {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-24 bg-gradient-to-r from-blue-600 to-orange-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
