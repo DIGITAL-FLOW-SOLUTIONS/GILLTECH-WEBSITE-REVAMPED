@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { 
   ArrowRight, 
   Users, 
@@ -11,111 +13,556 @@ import {
   Brain,
   CheckCircle,
   Star,
-  Award
+  Award,
+  Lightbulb,
+  Zap,
+  Heart,
+  Shield,
+  Rocket,
+  TrendingUp,
+  BarChart3,
+  Clock,
+  Eye,
+  Sparkles
 } from "lucide-react";
 
 export default function About() {
-  const achievements = [
-    {
-      icon: Trophy,
-      title: "Fortune 500 Collaborations",
-      description: "Executed market research that redefined product strategies for global leaders, boosting their market share and customer engagement."
-    },
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  
+  // Glitch effect state
+  const [glitching, setGlitching] = useState(false);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitching(true);
+      setTimeout(() => setGlitching(false), 200);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  // Animation variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+  
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const glitchAnimation = {
+    x: glitching ? [0, -2, 2, -2, 2, 0] : 0,
+    textShadow: glitching 
+      ? [
+        "0 0 0 transparent",
+        "2px 0 0 #ff6b6b, -2px 0 0 #4ecdc4",
+        "-2px 0 0 #ff6b6b, 2px 0 0 #4ecdc4",
+        "2px 0 0 #ff6b6b, -2px 0 0 #4ecdc4",
+        "0 0 0 transparent"
+      ]
+      : "0 0 0 transparent",
+    transition: { duration: 0.2 }
+  };
+  const stats = [
+    { number: "30+", label: "Global Projects", description: "Successful projects worldwide" },
+    { number: "92%", label: "Client Satisfaction", description: "Exceptional results delivered" },
+    { number: "5,000+", label: "Solutions Deployed", description: "Innovative solutions implemented" },
+    { number: "3+", label: "Years Experience", description: "Years of proven expertise" }
+  ];
+
+  const services = [
     {
       icon: Brain,
-      title: "AI Engagement Models",
-      description: "Developed predictive consumer-engagement frameworks that increased conversion rates by up to 30% for major brands."
+      title: "Strategic Campaign Planning",
+      description: "Comprehensive strategy development using AI-powered market intelligence and consumer behavior analysis."
     },
     {
-      icon: Globe,
-      title: "Global Industry Impact",
-      description: "Featured speakers and panelists at international conferences, sharing best practices in AI-driven research and sustainable innovation."
+      icon: Target,
+      title: "AI-Driven Advertising",
+      description: "Leverage predictive analytics and machine learning to optimize campaign performance and maximize ROI."
     },
     {
-      icon: Users,
-      title: "Community Partnerships",
-      description: "Co-created technology initiatives with NGOs and social enterprises, delivering scalable solutions in health, agriculture, and education."
-    },
-    {
-      icon: Award,
-      title: "DISH Competition 2024 Finalist",
-      description: "Our TamuBoost Clusters project was honored for tackling childhood malnutrition in underserved communities."
+      icon: Sparkles,
+      title: "Brand Development & Innovation",
+      description: "Create compelling brand narratives and innovative solutions that resonate with modern consumers."
     }
   ];
 
-  const approaches = [
-    { 
-      number: "1", 
-      title: "Discover & Define",
-      description: "Deep-dive workshops and ethnographic studies to uncover unmet needs and market gaps."
+  const approach = [
+    {
+      step: "01",
+      title: "Experience",
+      subtitle: "Integrity, Growth & Excellence",
+      description: "Our core values drive everything we do. We believe in honest partnerships, continuous innovation, and delivering exceptional results that exceed expectations."
     },
-    { 
-      number: "2", 
-      title: "Data-Driven Analysis", 
-      description: "Comprehensive analysis using AI-powered insights to validate market opportunities."
+    {
+      step: "02", 
+      title: "Strategy",
+      subtitle: "Data-Driven Methodology",
+      description: "We leverage advanced analytics and AI-powered insights to develop comprehensive strategies that are both innovative and grounded in solid market research."
     },
-    { 
-      number: "3", 
-      title: "Ideation & Prototyping", 
-      description: "Creative ideation sessions followed by rapid prototyping to bring concepts to life."
-    },
-    { 
-      number: "4", 
-      title: "Validation & Refinement", 
-      description: "Testing with real users and iterating based on feedback and data insights."
-    },
-    { 
-      number: "5", 
-      title: "Launch & Scale", 
-      description: "Strategic launch execution with optimization for sustainable growth and market impact."
+    {
+      step: "03",
+      title: "Innovation",
+      subtitle: "Cutting-Edge Solutions", 
+      description: "Our team combines creative thinking with the latest technology to deliver breakthrough solutions that drive sustainable growth and competitive advantage."
     }
   ];
 
-  const values = [
+  const team = [
     {
-      title: "AI-Powered Insights",
-      description: "Leverage predictive analytics to understand Gen Z and Millennial behaviors, ensuring your campaigns resonate deeply."
+      name: "Strategic Leadership",
+      description: "Our executive team brings decades of combined experience in AI, market research, and digital transformation across Fortune 500 companies.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
     },
     {
-      title: "End-to-End Market Research", 
-      description: "From competitor benchmarking to brand positioning, our holistic analysis equips you with a clear path to market leadership."
-    },
-    {
-      title: "Tailored Brand Growth",
-      description: "We combine digital storytelling with experiential design to build authentic connections and foster customer loyalty."
+      name: "Innovation Experts", 
+      description: "A diverse team of data scientists, strategists, and creative professionals dedicated to pushing the boundaries of what's possible.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <motion.div 
+      ref={containerRef}
+      className="min-h-screen bg-white"
+      style={{ 
+        scrollBehavior: "smooth"
+      }}
+    >
       <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+      <motion.section 
+        className="relative bg-gradient-to-br from-orange-50 via-white to-blue-50 py-20 overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Background decorations with parallax */}
+        <motion.div 
+          className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full opacity-20 blur-3xl"
+          style={{ y: backgroundY }}
+        ></motion.div>
+        <motion.div 
+          className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-200 to-blue-300 rounded-full opacity-20 blur-3xl"
+          style={{ y: textY }}
+        ></motion.div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div 
+              className="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+              }}
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 10, -10, 10, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 3
+                }}
+              >
+                <Sparkles className="w-5 h-5 text-orange-500 mr-2" />
+              </motion.div>
+              <span className="font-inter text-gray-700 font-semibold">Timeless Creativity, Powerful Innovation</span>
+            </motion.div>
+            
+            <motion.h1 
+              className="font-spartan font-bold text-5xl lg:text-7xl text-gray-900 leading-tight mb-8"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0, ...glitchAnimation }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              Powerful, Lasting <br />
+              <motion.span 
+                className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent"
+                whileHover={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  transition: { duration: 2, repeat: Infinity }
+                }}
+              >
+                Brand Impact
+              </motion.span>
+            </motion.h1>
+            
+            <motion.p 
+              className="font-inter text-gray-600 text-xl max-w-4xl mx-auto leading-relaxed mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              At our core, we are storytellers. With decades of experience in helping brands discover their authentic voice, we've learned that true brand power comes from understanding what makes each company unique and bringing that story to life.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col md:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <motion.div
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  rotateX: 5
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                  Discover Our Story
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </motion.div>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: -5,
+                  rotateX: 5
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-xl font-inter font-semibold">
+                  View Our Work
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
+          
+          {/* Stats Grid */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            {stats.map((stat, index) => {
+              const ref = useRef(null);
+              const isInView = useInView(ref, { once: true, margin: "-100px" });
+              
+              return (
+                <motion.div 
+                  key={index} 
+                  ref={ref}
+                  className="text-center"
+                  variants={fadeInUp}
+                  initial="initial"
+                  animate={isInView ? "animate" : "initial"}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 10,
+                    rotateX: 10
+                  }}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px"
+                  }}
+                >
+                  <motion.div 
+                    className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-2"
+                    initial={{ scale: 0 }}
+                    animate={isInView ? { scale: 1 } : { scale: 0 }}
+                    transition={{ delay: index * 0.1 + 0.5, type: "spring", stiffness: 200 }}
+                  >
+                    {stat.number}
+                  </motion.div>
+                  <div className="font-inter font-semibold text-gray-900 mb-1">
+                    {stat.label}
+                  </div>
+                  <div className="font-inter text-gray-600 text-sm">
+                    {stat.description}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Service Approach Section */}
+      <motion.section 
+        className="py-20 bg-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.h2 
+              className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6"
+              animate={glitchAnimation}
+            >
+              Shaping Brands <br />
+              <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+                Through Powerful Advertising
+              </span>
+            </motion.h2>
+            <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
+              Our strategic approach combines creativity with data-driven insights to deliver campaigns that not only capture attention but drive meaningful business results.
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {services.map((service, index) => {
+              const ref = useRef(null);
+              const isInView = useInView(ref, { once: true, margin: "-50px" });
+              
+              return (
+                <motion.div
+                  key={index}
+                  ref={ref}
+                  variants={fadeInUp}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 15,
+                    rotateX: 10,
+                    z: 50
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px"
+                  }}
+                >
+                  <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                    <CardContent className="p-8 text-center">
+                      <motion.div 
+                        className="bg-gradient-to-br from-orange-100 to-pink-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
+                        whileHover={{ 
+                          rotate: 360,
+                          scale: 1.1
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <service.icon className="w-8 h-8 text-orange-600" />
+                      </motion.div>
+                      <h3 className="font-spartan font-bold text-xl text-gray-900 mb-4">
+                        {service.title}
+                      </h3>
+                      <p className="font-inter text-gray-600 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Approach Section */}
+      <motion.section 
+        className="py-20 bg-gradient-to-br from-gray-50 to-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-12"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {approach.map((item, index) => {
+              const ref = useRef(null);
+              const isInView = useInView(ref, { once: true, margin: "-100px" });
+              
+              return (
+                <motion.div 
+                  key={index} 
+                  ref={ref}
+                  className="relative"
+                  variants={fadeInUp}
+                  whileHover={{
+                    scale: 1.02,
+                    rotateY: 10,
+                    rotateX: 5
+                  }}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px"
+                  }}
+                >
+                  <motion.div 
+                    className="absolute -top-4 -left-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+                    transition={{ delay: index * 0.2, type: "spring", stiffness: 200 }}
+                    whileHover={{ 
+                      scale: 1.2,
+                      rotate: 360,
+                      boxShadow: "0 0 20px rgba(255, 123, 77, 0.5)"
+                    }}
+                  >
+                    {item.step}
+                  </motion.div>
+                  <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 pt-8">
+                    <CardContent className="p-8">
+                      <h3 className="font-spartan font-bold text-2xl text-gray-900 mb-3">
+                        {item.title}
+                      </h3>
+                      <h4 className="font-inter font-semibold text-orange-600 mb-4">
+                        {item.subtitle}
+                      </h4>
+                      <p className="font-inter text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6">
+              Drive Media Behind <br />
+              <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+                Every Campaign
+              </span>
+            </h2>
+            <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
+              Our diverse team of experts brings together decades of experience in advertising, technology, and strategic consulting to deliver results that exceed expectations.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="font-poppins font-bold text-5xl lg:text-6xl text-brand-primary leading-tight mb-6">
-                Meet the <br />
-                <span className="text-brand-secondary">Gill Technologies</span> <br />
-                Team
-              </h1>
-              <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                For years we've been on a mission to help our clients' companies reveal their full potential by providing them with All-in-One AI Solution for Market Intelligence.
-              </p>
-              <Button className="bg-brand-secondary text-white hover:bg-orange-600 px-8 py-4 rounded-xl font-inter font-semibold">
-                Get in Touch
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
+            {team.map((member, index) => (
+              <div key={index} className="relative">
+                <div className="relative overflow-hidden rounded-2xl">
+                  <img 
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h3 className="font-spartan font-bold text-2xl mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="font-inter text-gray-200 leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional team collaboration" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-brand-primary rounded-2xl p-4 shadow-lg">
-                <Users className="w-8 h-8 text-white" />
+              <div className="bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl p-8 text-white">
+                <h3 className="font-spartan font-bold text-3xl mb-6">
+                  Empowering Brands with <br />
+                  Powerful Advertising <br />
+                  Solutions
+                </h3>
+                <p className="font-inter text-orange-100 mb-8 leading-relaxed">
+                  We transform creative visions into measurable business growth through strategic campaigns, innovative technology, and data-driven insights that resonate with your target audience.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="font-spartan font-bold text-3xl mb-1">150%</div>
+                    <div className="font-inter text-sm text-orange-200">Average ROI Increase</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-spartan font-bold text-3xl mb-1">85%</div>
+                    <div className="font-inter text-sm text-orange-200">Client Retention Rate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h2 className="font-spartan font-bold text-4xl text-gray-900 mb-8">
+                Our Mission & Values
+              </h2>
+              <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
+                We believe in the power of authentic storytelling and innovative technology to create meaningful connections between brands and their audiences. Our commitment goes beyond just delivering campaigns – we build lasting partnerships that drive sustainable growth.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-orange-100 rounded-full p-3 mr-4 mt-1">
+                    <Heart className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-spartan font-bold text-lg mb-2 text-gray-900">Authentic Partnerships</h3>
+                    <p className="font-inter text-gray-600">Building genuine relationships based on trust, transparency, and shared success.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-blue-100 rounded-full p-3 mr-4 mt-1">
+                    <Rocket className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-spartan font-bold text-lg mb-2 text-gray-900">Innovation First</h3>
+                    <p className="font-inter text-gray-600">Leveraging cutting-edge technology and creative thinking to stay ahead of market trends.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-pink-100 rounded-full p-3 mr-4 mt-1">
+                    <TrendingUp className="w-6 h-6 text-pink-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-spartan font-bold text-lg mb-2 text-gray-900">Measurable Impact</h3>
+                    <p className="font-inter text-gray-600">Delivering data-driven results that translate into real business growth and market success.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -123,190 +570,85 @@ export default function About() {
       </section>
 
       {/* Recognition Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gradient-to-r from-brand-secondary to-orange-600 rounded-2xl p-8 text-white">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <div className="bg-white rounded-xl p-4">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-3xl p-12 text-white text-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              <div className="bg-white rounded-2xl p-6">
                 <img 
                   src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/Dish-competition-logo.png" 
                   alt="DISH Competition Logo" 
-                  className="h-16 w-auto"
+                  className="h-20 w-auto"
                 />
               </div>
               <div className="text-center md:text-left">
-                <h2 className="font-spartan font-bold text-3xl mb-2">Proud finalists of the DISH Competition 2024</h2>
-                <p className="font-inter text-xl opacity-90">TamuBoost Clusters: Top 15 Winner</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Company Overview Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-spartan font-bold text-4xl text-brand-primary mb-8">
-                Company Overview
-              </h2>
-              <p className="font-inter text-gray-600 text-lg mb-6 leading-relaxed">
-                Founded in 2022, Gill Technologies emerged from a desire to tackle World's most pressing challenges through innovation and sustainable impact. What began as a small team of technologists and strategists has evolved into a leading hub for market research, AI development, and product incubation.
-              </p>
-              <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                From our first partnership designing a clean-energy cooking solution to large-scale consumer behavior studies for global brands, our journey has been defined by a steadfast commitment to driving economic growth across the continent.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex items-center">
-                  <div className="bg-brand-secondary rounded-full p-3 mr-4">
-                    <CheckCircle className="w-6 h-6 text-white" />
+                <h2 className="font-spartan font-bold text-4xl mb-4">
+                  Proud Finalists of the DISH Competition 2024
+                </h2>
+                <p className="font-inter text-xl text-orange-100 mb-6">
+                  TamuBoost Clusters: Recognized among the top 15 innovative solutions for tackling global challenges
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <div className="bg-white/20 rounded-lg px-4 py-2">
+                    <span className="font-inter font-semibold">Innovation Excellence</span>
                   </div>
-                  <div>
-                    <div className="font-spartan font-bold text-lg">Founded in 2022</div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="bg-brand-primary rounded-full p-3 mr-4">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-spartan font-bold text-lg">Three Core Areas</div>
-                    <div className="font-inter text-sm text-gray-600">Innovation • Strategy • Experience</div>
+                  <div className="bg-white/20 rounded-lg px-4 py-2">
+                    <span className="font-inter font-semibold">Global Impact</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                alt="Innovation workspace" 
-                className="rounded-xl shadow-lg"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                alt="Team collaboration" 
-                className="rounded-xl shadow-lg mt-8"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Approach Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-spartan font-bold text-4xl text-brand-primary mb-6">Our Approach</h2>
-            <p className="font-inter text-gray-600 text-xl max-w-3xl mx-auto">
-              We begin with deep-dive workshops and ethnographic studies to uncover unmet needs and market gaps.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {approaches.map((step, index) => (
-              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-brand-secondary text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                    {step.number}
-                  </div>
-                  <h3 className="font-spartan font-bold text-lg mb-3">{step.title}</h3>
-                  <p className="font-inter text-gray-600 text-sm">{step.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission-Driven Approach Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
-                alt="AI technology visualization" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-            </div>
-            <div>
-              <h2 className="font-spartan font-bold text-4xl text-brand-primary mb-8">
-                Tailored Brand Growth
-              </h2>
-              <p className="font-inter text-gray-600 text-lg mb-8 leading-relaxed">
-                Over the years we've gained the extensive expertise and tuned our work processes. At Gill Technologies, our mission-driven approach harnesses the power of artificial intelligence and cutting-edge research to propel companies into the future:
-              </p>
-              <div className="space-y-6">
-                {values.map((value, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="bg-brand-secondary rounded-full p-2 mr-4 mt-1">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-spartan font-bold text-lg mb-2">{value.title}</h3>
-                      <p className="font-inter text-gray-600">{value.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements & Recognition Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-spartan font-bold text-4xl text-brand-primary mb-6">Achievements & Recognition</h2>
-            <p className="font-inter text-gray-600 text-xl max-w-3xl mx-auto">
-              Our commitment to innovation and excellence has earned recognition from industry leaders and organizations worldwide.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="bg-gradient-to-r from-brand-secondary to-orange-600 p-3 rounded-xl">
-                      <achievement.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="bg-brand-primary text-white px-3 py-1 rounded-full text-sm font-bold">
-                      {index + 1}
-                    </div>
-                  </div>
-                  <h3 className="font-spartan font-bold text-xl mb-4 group-hover:text-brand-secondary transition-colors">
-                    {achievement.title}
-                  </h3>
-                  <p className="font-inter text-gray-600 leading-relaxed">
-                    {achievement.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-secondary to-orange-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-white mb-6">
-            Ready to Shape the Future Together?
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-orange-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-spartan font-bold text-4xl lg:text-6xl text-white mb-8">
+            Ready to Transform <br />
+            <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              Your Brand Story?
+            </span>
           </h2>
-          <p className="font-inter text-orange-100 text-xl mb-10 max-w-3xl mx-auto">
-            Join our mission to transform innovative ideas into market-leading solutions that drive economic growth and positive change.
+          <p className="font-inter text-gray-300 text-xl mb-12 max-w-4xl mx-auto leading-relaxed">
+            Let's collaborate to create powerful advertising solutions that drive meaningful growth, build lasting connections, and establish your brand as an industry leader.
           </p>
-          <Button className="bg-white text-brand-secondary hover:bg-gray-100 px-10 py-4 rounded-xl font-inter font-bold">
-            Get in Touch Today
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-inter font-bold px-10 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              Start Your Journey
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button variant="outline" className="border-2 border-gray-400 text-gray-300 hover:border-white hover:text-white px-10 py-4 rounded-xl font-inter font-bold backdrop-blur-sm">
+              View Case Studies
+            </Button>
+          </div>
+          
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="font-spartan font-bold text-3xl text-white mb-2">24/7</div>
+              <div className="font-inter text-gray-400">Support & Consultation</div>
+            </div>
+            <div className="text-center">
+              <div className="font-spartan font-bold text-3xl text-white mb-2">Global</div>
+              <div className="font-inter text-gray-400">Reach & Impact</div>
+            </div>
+            <div className="text-center">
+              <div className="font-spartan font-bold text-3xl text-white mb-2">Custom</div>
+              <div className="font-inter text-gray-400">Tailored Solutions</div>
+            </div>
+          </div>
         </div>
       </section>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 }

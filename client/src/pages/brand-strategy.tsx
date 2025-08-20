@@ -122,7 +122,7 @@ export default function BrandStrategy() {
       description:
         "Forward-thinking brand strategies that drive innovation and sustainable growth in evolving markets.",
       icon: Rocket,
-      gradient: "from-lue-500 to-orange-400",
+      gradient: "from-blue-500 to-orange-400",
       features: ["Innovation Strategy", "Growth Planning", "Market Expansion", "Future-Proofing"],
     },
     {
