@@ -8,6 +8,7 @@ import About from "@/pages/about";
 import Innovation from "@/pages/innovation";
 import BrandStrategy from "@/pages/brand-strategy";
 import BrandExperience from "@/pages/brand-experience";
+import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/innovation" component={Innovation} />
       <Route path="/brand-strategy" component={BrandStrategy} />
       <Route path="/brand-experience" component={BrandExperience} />
+      <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
   );
