@@ -56,9 +56,11 @@ export default function Navigation() {
             </div>
             <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
             <Link href="/about" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</Link>
+            <Link href="/contact">
             <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg">
               Book a Demo
             </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -100,9 +102,11 @@ export default function Navigation() {
               </div>
               <a href="#" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">Case Studies</a>
               <Link href="/about" className="font-inter text-gray-600 hover:text-brand-primary transition-colors duration-200 font-medium">About</Link>
+              <Link href="/contact">
               <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg w-full mt-4">
-                Get Started
+                Book a Demo
               </Button>
+              </Link>
             </div>
           </div>
         )}

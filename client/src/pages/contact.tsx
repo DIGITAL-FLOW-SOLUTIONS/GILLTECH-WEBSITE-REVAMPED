@@ -91,7 +91,7 @@ export default function Contact() {
           >
             <Card className="shadow-xl border-0 bg-white">
               <CardContent className="p-8 md:p-12">
-                <h2 className="font-spartan font-bold text-2xl text-gray-900 mb-8 text-center">
+                <h2 className="font-spartan font-bold text-4xl text-gray-900 mb-8 text-center">
                   Contact Us
                 </h2>
                 
@@ -146,7 +146,7 @@ export default function Contact() {
 
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-inter font-semibold rounded-lg transition-all duration-200 hover:shadow-lg"
+                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-inter font-semibold rounded-lg transition-all duration-200 hover:shadow-lg"
                   >
                     Submit
                   </Button>
