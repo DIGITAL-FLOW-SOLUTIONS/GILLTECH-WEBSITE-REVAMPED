@@ -266,13 +266,45 @@ export default function BrandStrategy() {
                   </p>
 
                <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
-                  Start Started
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.9 }}
+                                whileHover={{ 
+                                  scale: 1.05,
+                                  rotateY: 5,
+                                  rotateX: 5
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                <Button 
+                                  className="bg-gradient-to-r from-orange-500 to-blue-500 text-white hover:from-orange-600 hover:to-blue-600 px-8 py-4 rounded-xl font-inter font-bold transition-all duration-300"
+                                  data-testid="button-get-started"
+                                >
+                                  Get Started Today
+                                  <motion.div
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                  >
+                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                  </motion.div>
+                                </Button>
+                              </motion.div>
+                <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.9 }}
+                                whileHover={{ 
+                                  scale: 1.05,
+                                  rotateY: 5,
+                                  rotateX: 5
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                              >
                 <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
                   Get a Quote
                 </Button>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -740,15 +772,15 @@ export default function BrandStrategy() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-blue-600 via-orange-600 to-blue-500 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/20 to-blue-400/20 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-orange-400/20 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.7, 0.4] }}
             transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
           />
@@ -764,13 +796,13 @@ export default function BrandStrategy() {
             <h2 className="text-5xl lg:text-6xl font-bold mb-8">
               Ready to Transform Your Brand?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-white-600 mb-12 max-w-3xl mx-auto leading-relaxed">
               Join hundreds of successful brands who've partnered with us to create extraordinary brand experiences that
               drive growth and lasting impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-12 py-6 text-lg rounded-2xl shadow-2xl">
+                <Button className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-blue-600 hover:to-orange-600 text-white px-12 py-6 text-lg rounded-2xl shadow-2xl">
                   Start Your Transformation
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Button>
@@ -785,26 +817,7 @@ export default function BrandStrategy() {
               </motion.div>
             </div>
 
-            <motion.div
-              className="mt-16 flex justify-center space-x-8 text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <div>
-                <div className="text-2xl font-bold text-orange-400">Free</div>
-                <div className="text-sm text-gray-400">Strategy Session</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-pink-400">24hr</div>
-                <div className="text-sm text-gray-400">Response Time</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-cyan-400">100%</div>
-                <div className="text-sm text-gray-400">Satisfaction Guarantee</div>
-              </div>
-            </motion.div>
+            
           </motion.div>
         </div>
       </section>

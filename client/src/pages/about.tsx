@@ -146,20 +146,11 @@ export default function About() {
 
       {/* Hero Section */}
       <motion.section 
-        className="relative bg-gradient-to-br from-orange-50 via-white to-blue-50 py-20 overflow-hidden"
+        className="relative py-20 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-      >
-        {/* Background decorations with parallax */}
-        <motion.div 
-          className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full opacity-20 blur-3xl"
-          style={{ y: backgroundY }}
-        ></motion.div>
-        <motion.div 
-          className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-200 to-blue-300 rounded-full opacity-20 blur-3xl"
-          style={{ y: textY }}
-        ></motion.div>
+      > 
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -185,7 +176,7 @@ export default function About() {
               >
                 <Sparkles className="w-5 h-5 text-orange-500 mr-2" />
               </motion.div>
-              <span className="font-inter text-gray-700 font-semibold">Timeless Creativity, Powerful Innovation</span>
+              <span className="font-inter text-gray-700 font-semibold">About Gill Technologies</span>
             </motion.div>
             
             <motion.h1 
@@ -196,7 +187,7 @@ export default function About() {
             >
               Powerful, Lasting <br />
               <motion.span 
-                className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 bg-clip-text text-transparent"
                 whileHover={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   transition: { duration: 2, repeat: Infinity }
@@ -212,7 +203,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              At our core, we are storytellers. With decades of experience in helping brands discover their authentic voice, we've learned that true brand power comes from understanding what makes each company unique and bringing that story to life.
+              At our core, we are storytellers. With Years of experience in helping brands discover their authentic voice, we've learned that true brand power comes from understanding what makes each company unique and bringing that story to life.
             </motion.p>
             
             <motion.div 
@@ -229,7 +220,7 @@ export default function About() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
                   Discover Our Story
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
@@ -322,10 +313,9 @@ export default function About() {
           >
             <motion.h2 
               className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6"
-              animate={glitchAnimation}
             >
               Shaping Brands <br />
-              <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 bg-clip-text text-transparent">
                 Through Powerful Advertising
               </span>
             </motion.h2>
@@ -365,14 +355,14 @@ export default function About() {
                   <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 h-full">
                     <CardContent className="p-8 text-center">
                       <motion.div 
-                        className="bg-gradient-to-br from-orange-100 to-pink-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
+                        className="bg-gradient-to-br from-blue-100 to-orange-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-6"
                         whileHover={{ 
                           rotate: 360,
                           scale: 1.1
                         }}
                         transition={{ duration: 0.5 }}
                       >
-                        <service.icon className="w-8 h-8 text-orange-600" />
+                        <service.icon className="w-8 h-8 text-blue-600" />
                       </motion.div>
                       <h3 className="font-spartan font-bold text-xl text-gray-900 mb-4">
                         {service.title}
@@ -426,7 +416,7 @@ export default function About() {
                   }}
                 >
                   <motion.div 
-                    className="absolute -top-4 -left-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+                    className="absolute -top-4 -left-4 bg-gradient-to-r from-blue-500 to-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
                     initial={{ scale: 0, rotate: -180 }}
                     animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
                     transition={{ delay: index * 0.2, type: "spring", stiffness: 200 }}
@@ -464,12 +454,12 @@ export default function About() {
           <div className="text-center mb-16">
             <h2 className="font-spartan font-bold text-4xl lg:text-5xl text-gray-900 mb-6">
               Drive Media Behind <br />
-              <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 bg-clip-text text-transparent">
                 Every Campaign
               </span>
             </h2>
             <p className="font-inter text-gray-600 text-lg max-w-3xl mx-auto">
-              Our diverse team of experts brings together decades of experience in advertising, technology, and strategic consulting to deliver results that exceed expectations.
+              Our diverse team of experts brings together years of experience in advertising, technology, and strategic consulting to deliver results that exceed expectations.
             </p>
           </div>
           
@@ -499,11 +489,11 @@ export default function About() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-orange-500 to-blue-500 rounded-2xl p-8 text-white">
                 <h3 className="font-spartan font-bold text-3xl mb-6">
                   Empowering Brands with <br />
                   Powerful Advertising <br />
@@ -515,11 +505,11 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
                     <div className="font-spartan font-bold text-3xl mb-1">150%</div>
-                    <div className="font-inter text-sm text-orange-200">Average ROI Increase</div>
+                    <div className="font-inter text-sm text-white-400">Average ROI Increase</div>
                   </div>
                   <div className="text-center">
                     <div className="font-spartan font-bold text-3xl mb-1">85%</div>
-                    <div className="font-inter text-sm text-orange-200">Client Retention Rate</div>
+                    <div className="font-inter text-sm text-white-400">Client Retention Rate</div>
                   </div>
                 </div>
               </div>
@@ -535,8 +525,8 @@ export default function About() {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="bg-orange-100 rounded-full p-3 mr-4 mt-1">
-                    <Heart className="w-6 h-6 text-orange-600" />
+                  <div className="bg-blue-100 rounded-full p-3 mr-4 mt-1">
+                    <Heart className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-spartan font-bold text-lg mb-2 text-gray-900">Authentic Partnerships</h3>
@@ -555,8 +545,8 @@ export default function About() {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="bg-pink-100 rounded-full p-3 mr-4 mt-1">
-                    <TrendingUp className="w-6 h-6 text-pink-600" />
+                  <div className="bg-blue-100 rounded-full p-3 mr-4 mt-1">
+                    <TrendingUp className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-spartan font-bold text-lg mb-2 text-gray-900">Measurable Impact</h3>
@@ -572,7 +562,7 @@ export default function About() {
       {/* Recognition Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-3xl p-12 text-white text-center">
+          <div className="bg-gradient-to-r from-blue-500 to-orange-500 rounded-3xl p-12 text-white text-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               <div className="bg-white rounded-2xl p-6">
                 <img 
@@ -585,7 +575,7 @@ export default function About() {
                 <h2 className="font-spartan font-bold text-4xl mb-4">
                   Proud Finalists of the DISH Competition 2024
                 </h2>
-                <p className="font-inter text-xl text-orange-100 mb-6">
+                <p className="font-inter text-xl text-white-100 mb-6">
                   TamuBoost Clusters: Recognized among the top 15 innovative solutions for tackling global challenges
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -603,17 +593,17 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-blue-900 via-orange-900 to-blue-900 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-orange-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400/10 to-orange-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-orange-400/10 rounded-full blur-3xl"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-spartan font-bold text-4xl lg:text-6xl text-white mb-8">
             Ready to Transform <br />
-            <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-orange-400 to-blue-400 bg-clip-text text-transparent">
               Your Brand Story?
             </span>
           </h2>
@@ -622,28 +612,13 @@ export default function About() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-inter font-bold px-10 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-bold px-10 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
               Start Your Journey
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="outline" className="border-2 border-gray-400 text-gray-300 hover:border-white hover:text-white px-10 py-4 rounded-xl font-inter font-bold backdrop-blur-sm">
+            <Button variant="outline" className="border-2 border-gray-400 text-gray-800 hover:border-white hover:text-gray-900 px-10 py-4 rounded-xl font-inter font-bold backdrop-blur-sm">
               View Case Studies
             </Button>
-          </div>
-          
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="font-spartan font-bold text-3xl text-white mb-2">24/7</div>
-              <div className="font-inter text-gray-400">Support & Consultation</div>
-            </div>
-            <div className="text-center">
-              <div className="font-spartan font-bold text-3xl text-white mb-2">Global</div>
-              <div className="font-inter text-gray-400">Reach & Impact</div>
-            </div>
-            <div className="text-center">
-              <div className="font-spartan font-bold text-3xl text-white mb-2">Custom</div>
-              <div className="font-inter text-gray-400">Tailored Solutions</div>
-            </div>
           </div>
         </div>
       </section>
