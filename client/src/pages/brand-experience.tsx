@@ -431,7 +431,7 @@ export default function BrandExperience() {
                       alt="Immersive brand experience" 
                       className="rounded-2xl shadow-2xl w-full h-auto"
                     />
-                    <div className="absolute -top-6 -right-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-4 shadow-lg">
+                    <div className="absolute -top-6 -right-6 bg-gradient-to-r from-blue-600 to-orange-600 rounded-2xl p-4 shadow-lg">
                       <Eye className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -672,10 +672,12 @@ export default function BrandExperience() {
                 <p className="font-inter text-white-600 text-xl mb-10 max-w-3xl mx-auto">
                   Ready to create brand experiences that captivate, engage, and inspire lasting connections with your audience?
                 </p>
+                <Link href="/contact">
                 <Button className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 rounded-xl font-inter font-bold">
                   Get in Touch for a Brand Experience Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
+                  </Link>
               </div>
             </section>
 

@@ -378,9 +378,11 @@ export default function BrandStrategy() {
 
                 {/* Bottom Green Button */}
                 <div className="absolute bottom-6 right-6">
+                  <Link href="/contact">
                   <Button className="bg-gradient-to-r from-orange-500 via-gray-400 to-blue-600 text-white hover:from-orange-600 hover:via-gray-500 hover:to-blue-700 font-inter font-semibold transition-all duration-200 hover:shadow-lg w-full mt-4">
                     Join the Future of Branding
                   </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -666,6 +668,7 @@ export default function BrandStrategy() {
                         </div>
                       ))}
                     </div>
+                    <Link href="/about">
                     <Button
                       variant="outline"
                       className="w-full group-hover:border-purple-500 group-hover:text-purple-500 bg-transparent"
@@ -673,6 +676,7 @@ export default function BrandStrategy() {
                       View Case Study
                       <ArrowUpRight className="ml-2 w-4 h-4" />
                     </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -807,18 +811,22 @@ export default function BrandStrategy() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/contact">
                 <Button className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-blue-600 hover:to-orange-600 text-white px-12 py-6 text-lg rounded-2xl shadow-2xl">
                   Start Your Transformation
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Button>
+                </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/contact">
                 <Button
                   variant="outline"
                   className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-12 py-6 text-lg rounded-2xl bg-transparent"
                 >
                   Schedule Consultation
                 </Button>
+                  </Link>
               </motion.div>
             </div>
 

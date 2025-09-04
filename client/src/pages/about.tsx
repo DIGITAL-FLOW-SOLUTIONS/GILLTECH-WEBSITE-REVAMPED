@@ -126,12 +126,12 @@ export default function About() {
     {
       name: "Strategic Leadership",
       description: "Our executive team brings decades of combined experience in AI, market research, and digital transformation across Fortune 500 companies.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+      image: "https://media.istockphoto.com/id/1287677376/photo/television-streaming-multimedia-wall-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=hXXTBGHJCJzdHrlyjV93iUOep0IYvAls4eIC4bYuNP0="
     },
     {
       name: "Innovation Experts", 
       description: "A diverse team of data scientists, strategists, and creative professionals dedicated to pushing the boundaries of what's possible.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+      image: "https://media.istockphoto.com/id/1419358775/photo/television-streaming-video-multimedia-wall.webp?a=1&b=1&s=612x612&w=0&k=20&c=ETEfAxL08FkYjtzeXa0vGBSDiaJyNbWkR2G9-5Z9gu4="
     }
   ];
 
@@ -223,7 +223,7 @@ export default function About() {
               >
                 <Link href="/contact">
                   <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
-                    Discover Our Story
+                   Get a Quote
                     <motion.div
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
@@ -569,12 +569,14 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-blue-500 to-orange-500 rounded-3xl p-12 text-white text-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 col-lg-12">
-              <div className="bg-white rounded-2xl p-6 col-lg-4">
-                <img 
-                  src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/Dish-competition-logo.png" 
-                  alt="DISH Competition Logo" 
-                  className="h-20 w-auto"
-                />
+              <div className="bg-white rounded-2xl p-6 flex-shrink-0">
+                <div className="w-20 h-20 flex items-center justify-center">
+                  <img 
+                    src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/Dish-competition-logo.png" 
+                    alt="DISH Competition Logo" 
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
               </div>
               <div className="text-center md:text-left col-lg-8">
                 <h2 className="font-spartan font-bold text-4xl mb-4">
@@ -616,13 +618,17 @@ export default function About() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Link href="/contact">
             <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-bold px-10 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
               Start Your Journey
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+              </Link>
+            <Link href="/home">
             <Button variant="outline" className="border-2 border-gray-400 text-gray-800 hover:border-white hover:text-gray-900 px-10 py-4 rounded-xl font-inter font-bold backdrop-blur-sm">
               View Case Studies
             </Button>
+            </Link>
           </div>
         </div>
       </section>

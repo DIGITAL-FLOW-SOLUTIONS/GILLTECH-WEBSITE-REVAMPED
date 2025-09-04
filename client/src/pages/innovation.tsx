@@ -459,10 +459,12 @@ export default function Innovation() {
           <p className="font-inter text-gray-600 text-xl mb-10 max-w-3xl mx-auto">
             Get in Touch for Innovation Solutions and transform your business with cutting-edge technology and strategic insights.
           </p>
+          <Link href="/contact">
           <Button className="bg-brand-secondary text-white hover:bg-orange-600 px-10 py-4 rounded-xl font-inter font-bold">
             Let's Talk Innovation
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+          </Link>
         </div>
       </section>
 

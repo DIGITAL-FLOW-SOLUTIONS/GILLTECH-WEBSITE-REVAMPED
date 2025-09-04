@@ -344,9 +344,9 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-12">
-            <Link href="/about">
+            <Link href="/contact">
               <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
-                View All Services
+                Get in Touch
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -536,13 +536,17 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact">
                 <Button className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-lg">
                   Schedule Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
+                </Link>
+                <Link href="/contact">
                 <Button variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-orange-500 px-8 py-4 rounded-lg font-inter font-semibold transition-all duration-300">
                   View Case Studies
                 </Button>
+                </Link>
               </div>
             </div>
             
