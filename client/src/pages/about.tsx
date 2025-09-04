@@ -148,7 +148,7 @@ export default function About() {
 
       {/* Hero Section */}
       <motion.section 
-        className="relative py-20 overflow-hidden"
+        className="relative py-20 overflow-hidden min-h-[600px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -156,14 +156,14 @@ export default function About() {
         {/* Grid Distortion Background */}
         <div className="absolute inset-0 w-full h-full">
           <GridDistortion
-            imageSrc="https://picsum.photos/1920/1080?grayscale"
+            imageSrc="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80&fm=jpg&blend=multiply&sat=-100"
             grid={10}
             mouse={0.1}
             strength={0.15}
             relaxation={0.9}
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-white/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/20 to-white/30"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
