@@ -12,8 +12,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ChevronDown, ChevronRight, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+type SubmissionState = 'idle' | 'loading' | 'success' | 'error';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -22,6 +24,8 @@ export default function Contact() {
     message: ""
   });
 
+  const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,12 +33,51 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value
     });
+    
+    // Clear error state when user starts typing
+    if (submissionState === 'error') {
+      setSubmissionState('idle');
+      setErrorMessage('');
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setSubmissionState('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmissionState('success');
+        // Clear form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+        
+        // Reset to idle state after 3 seconds
+        setTimeout(() => {
+          setSubmissionState('idle');
+        }, 3000);
+      } else {
+        setSubmissionState('error');
+        setErrorMessage(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmissionState('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+    }
   };
 
   const faqItems = [
@@ -112,6 +155,8 @@ export default function Contact() {
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg font-inter text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500 transition-colors"
                       placeholder="Enter your name"
                       required
+                      disabled={submissionState === 'loading'}
+                      data-testid="input-name"
                     />
                   </div>
 
@@ -128,6 +173,8 @@ export default function Contact() {
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg font-inter text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500 transition-colors"
                       placeholder="Enter your email address"
                       required
+                      disabled={submissionState === 'loading'}
+                      data-testid="input-email"
                     />
                   </div>
 
@@ -144,15 +191,98 @@ export default function Contact() {
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:ring-orange-500 transition-colors resize-none"
                       placeholder="Tell us about your project or ask us anything..."
                       required
+                      disabled={submissionState === 'loading'}
+                      data-testid="textarea-message"
                     />
                   </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-inter font-semibold rounded-lg transition-all duration-200 hover:shadow-lg"
+                  {/* Status Messages */}
+                  <AnimatePresence mode="wait">
+                    {submissionState === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, height: 0 }}
+                        animate={{ opacity: 1, y: 0, height: 'auto' }}
+                        exit={{ opacity: 0, y: -10, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg border border-red-200"
+                        data-testid="error-message"
+                      >
+                        <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                        <span className="font-inter text-sm">{errorMessage}</span>
+                      </motion.div>
+                    )}
+                    
+                    {submissionState === 'success' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, height: 0 }}
+                        animate={{ opacity: 1, y: 0, height: 'auto' }}
+                        exit={{ opacity: 0, y: -10, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg border border-green-200"
+                        data-testid="success-message"
+                      >
+                        <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                        <span className="font-inter text-sm">Message sent successfully! We'll get back to you soon.</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <motion.div
+                    whileTap={{ scale: submissionState === 'loading' ? 1 : 0.98 }}
+                    transition={{ duration: 0.1 }}
                   >
-                    Submit
-                  </Button>
+                    <Button
+                      type="submit"
+                      disabled={submissionState === 'loading'}
+                      className={`w-full h-12 font-inter font-semibold rounded-lg transition-all duration-200 relative overflow-hidden ${
+                        submissionState === 'success'
+                          ? 'bg-green-500 hover:bg-green-600 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:shadow-lg'
+                      } ${submissionState === 'loading' ? 'cursor-not-allowed' : ''}`}
+                      data-testid="button-submit"
+                    >
+                      <AnimatePresence mode="wait">
+                        {submissionState === 'loading' && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex items-center justify-center gap-2"
+                          >
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            <span>Sending...</span>
+                          </motion.div>
+                        )}
+                        
+                        {submissionState === 'success' && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex items-center justify-center gap-2"
+                          >
+                            <CheckCircle className="h-4 w-4" />
+                            <span>Sent!</span>
+                          </motion.div>
+                        )}
+                        
+                        {(submissionState === 'idle' || submissionState === 'error') && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex items-center justify-center gap-2"
+                          >
+                            <Send className="h-4 w-4" />
+                            <span>{submissionState === 'error' ? 'Try Again' : 'Send Message'}</span>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </Button>
+                  </motion.div>
                 </form>
               </CardContent>
             </Card>
