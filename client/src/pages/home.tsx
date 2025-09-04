@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Link } from "wouter";
 import { 
   ArrowRight, 
   Brain, 
@@ -211,10 +212,12 @@ export default function Home() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 font-inter"
                 />
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  Get Started
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+                <Link href="/contact">
+                  <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+                    Get Started
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
             
@@ -328,20 +331,25 @@ export default function Home() {
                   <p className="font-inter text-gray-600 mb-6 leading-relaxed text-sm">
                     {service.description}
                   </p>
-                  <button className="font-inter font-semibold text-orange-500 hover:text-orange-600 transition-colors duration-200 flex items-center text-sm">
+                  <Link 
+                    href={service.title === 'Innovation' ? '/innovation' : service.title === 'Brand Experience' ? '/brand-experience' : service.title === 'Brand Strategy' ? '/brand-strategy' : '/about'} 
+                    className="font-inter font-semibold text-orange-500 hover:text-orange-600 transition-colors duration-200 flex items-center text-sm"
+                  >
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4" />
-                  </button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
           </div>
           
           <div className="text-center mt-12">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
-              View All Services
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <Link href="/about">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+                View All Services
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -383,10 +391,12 @@ export default function Home() {
                 </div>
               </div>
               
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
-                Read Full Case Study
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <Link href="/about">
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  Read Full Case Study
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
             </div>
             
             <div className="relative">

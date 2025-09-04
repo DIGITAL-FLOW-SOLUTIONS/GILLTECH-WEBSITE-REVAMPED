@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Link } from "wouter";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { 
@@ -252,18 +253,20 @@ export default function BrandExperience() {
                                 }}
                                 whileTap={{ scale: 0.95 }}
                               >
-                                <Button 
-                                  className="bg-gradient-to-r from-orange-500 to-blue-500 text-white hover:from-orange-600 hover:to-blue-600 px-8 py-4 rounded-xl font-inter font-bold transition-all duration-300"
-                                  data-testid="button-get-started"
-                                >
-                                  Get Started
-                                  <motion.div
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                <Link href="/contact">
+                                  <Button 
+                                    className="bg-gradient-to-r from-orange-500 to-blue-500 text-white hover:from-orange-600 hover:to-blue-600 px-8 py-4 rounded-xl font-inter font-bold transition-all duration-300"
+                                    data-testid="button-get-started"
                                   >
-                                    <ArrowRight className="ml-2 w-5 h-5" />
-                                  </motion.div>
-                                </Button>
+                                    Get Started
+                                    <motion.div
+                                      animate={{ x: [0, 5, 0] }}
+                                      transition={{ duration: 1.5, repeat: Infinity }}
+                                    >
+                                      <ArrowRight className="ml-2 w-5 h-5" />
+                                    </motion.div>
+                                  </Button>
+                                </Link>
                               </motion.div>
                 <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -276,9 +279,11 @@ export default function BrandExperience() {
                                 }}
                                 whileTap={{ scale: 0.95 }}
                               >
-                <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
-                  Get a Quote
-                </Button>
+                <Link href="/contact">
+                  <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
+                    Get a Quote
+                  </Button>
+                </Link>
                 </motion.div>
               </div>
             </motion.div>

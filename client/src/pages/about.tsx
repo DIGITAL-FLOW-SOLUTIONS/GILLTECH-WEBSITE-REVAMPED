@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Link } from "wouter";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { 
@@ -220,15 +221,17 @@ export default function About() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
-                  Discover Our Story
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </motion.div>
-                </Button>
+                <Link href="/contact">
+                  <Button className="bg-gradient-to-r from-blue-500 to-orange-500 text-white font-inter font-semibold px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300">
+                    Discover Our Story
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </motion.div>
+                  </Button>
+                </Link>
               </motion.div>
               <motion.div
                 whileHover={{ 
@@ -238,9 +241,11 @@ export default function About() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-xl font-inter font-semibold">
-                  View Our Work
-                </Button>
+                <Link href="/innovation">
+                  <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-xl font-inter font-semibold">
+                    View Our Work
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>

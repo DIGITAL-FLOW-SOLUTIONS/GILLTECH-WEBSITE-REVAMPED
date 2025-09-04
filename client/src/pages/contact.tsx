@@ -61,7 +61,7 @@ export default function Contact() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -82,7 +82,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -91,8 +91,11 @@ export default function Contact() {
           >
             <Card className="shadow-xl border-0 bg-white">
               <CardContent className="p-8 md:p-12">
-                <h2 className="font-spartan font-bold text-4xl text-gray-900 mb-8 text-center">
-                  Contact Us
+              
+                <h2 className="font-spartan font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-6 text-center">
+                  <span className="bg-gradient-to-r from-blue-500 to-orange-600 bg-clip-text text-transparent">
+                    Get In Touch 
+                  </span>
                 </h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">

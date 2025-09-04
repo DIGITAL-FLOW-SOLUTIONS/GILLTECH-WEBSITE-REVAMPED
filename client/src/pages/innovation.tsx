@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Link } from "wouter";
 import { 
   ArrowRight, 
   Lightbulb,
@@ -98,13 +99,17 @@ export default function Innovation() {
               </p>             
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
-                  Start Started
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
-                  Get a Quote
-                </Button>
+                <Link href="/contact">
+                  <Button className="bg-orange-500 hover:bg-orange-600 text-white font-inter font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                    Get Started
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-orange-500 hover:text-orange-500 px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 hover:shadow-md">
+                    Get a Quote
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -317,10 +322,12 @@ export default function Innovation() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button className="bg-white text-orange-500 hover:bg-gray-100 font-inter font-bold px-12 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105 shadow-2xl group">
-                Start Your Innovation Journey
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-white text-orange-500 hover:bg-gray-100 font-inter font-bold px-12 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105 shadow-2xl group">
+                  Start Your Innovation Journey
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Button>
+              </Link>
               
               <div className="flex items-center space-x-6 text-white text-opacity-90">
                 <div className="flex items-center">
