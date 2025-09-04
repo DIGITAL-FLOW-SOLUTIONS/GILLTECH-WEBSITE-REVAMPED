@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import GridDistortion from "@/components/GridDistortion";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -152,8 +153,20 @@ export default function About() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       > 
+        {/* Grid Distortion Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <GridDistortion
+            imageSrc="https://picsum.photos/1920/1080?grayscale"
+            grid={10}
+            mouse={0.1}
+            strength={0.15}
+            relaxation={0.9}
+            className="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-white/80"></div>
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.div 
               className="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg mb-8"
