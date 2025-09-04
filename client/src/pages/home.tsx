@@ -183,11 +183,12 @@ export default function Home() {
             scale={3.6}
             hueShift={0}
             colorFrequency={1}
-            noise={0.5}
+            noise={0}
             glow={1}
             transparent={true}
             hoverStrength={2}
             inertia={0.05}
+            suspendWhenOffscreen={false}
           />
         </div>
         
