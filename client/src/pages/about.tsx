@@ -563,27 +563,26 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-blue-500 to-orange-500 rounded-3xl p-12 text-white text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              <div className="bg-white rounded-2xl p-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 col-lg-12">
+              <div className="bg-white rounded-2xl p-6 col-lg-4">
                 <img 
                   src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/service/Dish-competition-logo.png" 
                   alt="DISH Competition Logo" 
                   className="h-20 w-auto"
                 />
               </div>
-              <div className="text-center md:text-left">
+              <div className="text-center md:text-left col-lg-8">
                 <h2 className="font-spartan font-bold text-4xl mb-4">
                   Proud Finalists of the DISH Competition 2024
                 </h2>
-                <p className="font-inter text-xl text-white-100 mb-6">
+                <p className="font-inter text-xl text-white-100 mb-4">
                   TamuBoost Clusters: Recognized among the top 15 innovative solutions for tackling global challenges
                 </p>
+                <p className="text-xl text-white-100 mb-4"> TamuBoost Clusters – A nutritious, locally sourced school snack addressing malnutrition, improving children’s health and cognitive development,  was recognized for its role in 
+                  promoting healthy diets and well-being in underserved communities. </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                   <div className="bg-white/20 rounded-lg px-4 py-2">
-                    <span className="font-inter font-semibold">Innovation Excellence</span>
-                  </div>
-                  <div className="bg-white/20 rounded-lg px-4 py-2">
-                    <span className="font-inter font-semibold">Global Impact</span>
+                    <a href="https://youtu.be/rasf2fiNbZQ" className="font-inter font-semibold">Watch Now <ArrowRight className="inline-block ml-2 w-5 h-5" /></a>
                   </div>
                 </div>
               </div>
