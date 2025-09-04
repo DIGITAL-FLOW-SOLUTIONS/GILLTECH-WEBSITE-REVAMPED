@@ -4,7 +4,7 @@ import "./index.css";
 import { Router } from "wouter";
 
 createRoot(document.getElementById("root")!).render(
-  <Router base="/GILLTECH-WEBSITE-REVAMPED">
+  <Router base="/">
     <App />
   </Router>
 );

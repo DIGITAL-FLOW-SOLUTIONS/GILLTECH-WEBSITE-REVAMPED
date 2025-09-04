@@ -64,9 +64,8 @@ app.use((req, res, next) => {
 
 server.listen({
   port,
-  host: "localhost",
-  // reusePort: true ← REMOVE or set to false
+  host: "0.0.0.0",
 }, () => {
-  log(`Serving on http://localhost:${port}`);
+  log(`Serving on http://0.0.0.0:${port}`);
 });
 })();
