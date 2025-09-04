@@ -83,73 +83,54 @@ const GridDistortion: React.FC<GridDistortionProps> = ({
       uDataTexture: { value: null as THREE.DataTexture | null }
     };
 
-    // Define handleResize function first
-    const handleResize = () => {
-      if (!container || !renderer || !camera) return;
-
-      const rect = container.getBoundingClientRect();
-      const width = rect.width;
-      const height = rect.height;
-
-      if (width === 0 || height === 0) return;
-
-      const containerAspect = width / height;
-
-      renderer.setSize(width, height);
-      renderer.domElement.style.width = '100%';
-      renderer.domElement.style.height = '100%';
-
-      if (planeRef.current) {
-        planeRef.current.scale.set(containerAspect, 1, 1);
-      }
-
-      const frustumHeight = 1;
-      const frustumWidth = frustumHeight * containerAspect;
-      camera.left = -frustumWidth / 2;
-      camera.right = frustumWidth / 2;
-      camera.top = frustumHeight / 2;
-      camera.bottom = -frustumHeight / 2;
-      camera.updateProjectionMatrix();
-
-      uniforms.resolution.value.set(width, height, 1, 1);
-    };
-
-    // Create a procedural texture
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    
-    if (ctx) {
-      // Create a grayscale pattern that looks like a city skyline
-      const gradient = ctx.createLinearGradient(0, 0, 512, 512);
-      gradient.addColorStop(0, '#2c3e50');
-      gradient.addColorStop(0.3, '#34495e');
-      gradient.addColorStop(0.6, '#7f8c8d');
-      gradient.addColorStop(1, '#95a5a6');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 512, 512);
-      
-      // Add some noise pattern
-      const imageData = ctx.getImageData(0, 0, 512, 512);
-      const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const noise = (Math.random() - 0.5) * 30;
-        data[i] = Math.max(0, Math.min(255, data[i] + noise));     // R
-        data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise)); // G
-        data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise)); // B
-      }
-      ctx.putImageData(imageData, 0, 0);
-      
-      const texture = new THREE.CanvasTexture(canvas);
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load(imageSrc, (texture: THREE.Texture) => {
       texture.minFilter = THREE.LinearFilter;
       texture.magFilter = THREE.LinearFilter;
       texture.wrapS = THREE.ClampToEdgeWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
-      imageAspectRef.current = 1;
+      imageAspectRef.current = texture.image.width / texture.image.height;
       uniforms.uTexture.value = texture;
       handleResize();
-    }
+    }, undefined, (error) => {
+      console.error('Error loading texture:', error);
+      // Create fallback procedural texture
+      const canvas = document.createElement('canvas');
+      canvas.width = 1920;
+      canvas.height = 1080;
+      const ctx = canvas.getContext('2d');
+      
+      if (ctx) {
+        // Create grayscale city-like pattern
+        const gradient = ctx.createLinearGradient(0, 0, 1920, 1080);
+        gradient.addColorStop(0, '#1a1a1a');
+        gradient.addColorStop(0.3, '#2d2d2d');
+        gradient.addColorStop(0.7, '#4a4a4a');
+        gradient.addColorStop(1, '#6a6a6a');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1920, 1080);
+        
+        // Add noise
+        const imageData = ctx.getImageData(0, 0, 1920, 1080);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const noise = (Math.random() - 0.5) * 20;
+          data[i] = Math.max(0, Math.min(255, data[i] + noise));
+          data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise));
+          data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise));
+        }
+        ctx.putImageData(imageData, 0, 0);
+        
+        const fallbackTexture = new THREE.CanvasTexture(canvas);
+        fallbackTexture.minFilter = THREE.LinearFilter;
+        fallbackTexture.magFilter = THREE.LinearFilter;
+        fallbackTexture.wrapS = THREE.ClampToEdgeWrapping;
+        fallbackTexture.wrapT = THREE.ClampToEdgeWrapping;
+        imageAspectRef.current = 1920 / 1080;
+        uniforms.uTexture.value = fallbackTexture;
+        handleResize();
+      }
+    });
 
     const size = grid;
     const data = new Float32Array(4 * size * size);
@@ -174,6 +155,34 @@ const GridDistortion: React.FC<GridDistortionProps> = ({
     const plane = new THREE.Mesh(geometry, material);
     planeRef.current = plane;
     scene.add(plane);
+
+    const handleResize = () => {
+      if (!container || !renderer || !camera) return;
+
+      const rect = container.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+
+      if (width === 0 || height === 0) return;
+
+      const containerAspect = width / height;
+
+      renderer.setSize(width, height);
+
+      if (plane) {
+        plane.scale.set(containerAspect, 1, 1);
+      }
+
+      const frustumHeight = 1;
+      const frustumWidth = frustumHeight * containerAspect;
+      camera.left = -frustumWidth / 2;
+      camera.right = frustumWidth / 2;
+      camera.top = frustumHeight / 2;
+      camera.bottom = -frustumHeight / 2;
+      camera.updateProjectionMatrix();
+
+      uniforms.resolution.value.set(width, height, 1, 1);
+    };
 
     if (window.ResizeObserver) {
       const resizeObserver = new ResizeObserver(() => {
@@ -297,13 +306,12 @@ const GridDistortion: React.FC<GridDistortionProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`absolute inset-0 ${className}`}
+      className={`relative overflow-hidden ${className}`}
       style={{
         width: '100%',
         height: '100%',
         minWidth: '0',
-        minHeight: '0',
-        zIndex: 0
+        minHeight: '0'
       }}
     />
   );

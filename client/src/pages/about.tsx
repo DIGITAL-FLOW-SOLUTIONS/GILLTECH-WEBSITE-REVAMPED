@@ -156,7 +156,7 @@ export default function About() {
         {/* Grid Distortion Background */}
         <div className="absolute inset-0 w-full h-full">
           <GridDistortion
-            imageSrc="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80&fm=jpg&blend=multiply&sat=-100"
+            imageSrc="https://picsum.photos/1920/1080?grayscale"
             grid={10}
             mouse={0.1}
             strength={0.15}
