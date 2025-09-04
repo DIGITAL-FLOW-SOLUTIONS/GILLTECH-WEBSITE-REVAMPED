@@ -7,13 +7,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 lg:col-span-2">
-            <div className="flex items-center mb-6">
+            <div>
+              <Link href="/" className="flex items-center mb-6">
               <img 
                 src="https://digital-flow-solutions.github.io/Gill-Technologies-Website/img/favicon.png" 
                 alt="Gill Technologies Logo" 
                 className="h-10 w-10 mr-3"
               />
               <span className="font-spartan font-bold text-2xl text-white">Gill Technologies</span>
+            </Link>
             </div>
             <p className="font-inter text-gray-300 text-lg mb-6 max-w-md">
               Transforming innovation into market-leading solutions. We help brands build impactful experiences through AI-driven insights and strategic innovation.
@@ -25,10 +27,10 @@ export default function Footer() {
           <div>
             <h3 className="font-spartan font-bold text-lg text-white mb-6">Services</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">AI Strategy</a></li>
+              <li><Link href="/about" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">AI Strategy</Link></li>
               <li><Link href="/brand-strategy" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Brand Strategy</Link></li>
               <li><Link href="/innovation" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Innovation</Link></li>
-              <li><a href="#" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Brand Experience</a></li>
+              <li><Link href="/brand-experience" className="font-inter text-gray-300 hover:text-brand-secondary transition-colors duration-200">Brand Experience</Link></li>
             </ul>
           </div>
 

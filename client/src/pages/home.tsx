@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import Prism from "@/components/Prism";
 import { Link } from "wouter";
 import { 
   ArrowRight, 
@@ -172,11 +173,29 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-50 to-white py-20 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl opacity-60 transform rotate-12"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl opacity-60 transform -rotate-12"></div>
+        {/* Prism Background */}
+        <div className="absolute inset-0 z-0">
+          <Prism
+            animationType="hover"
+            timeScale={0.5}
+            height={3.5}
+            baseWidth={5.5}
+            scale={3.6}
+            hueShift={0}
+            colorFrequency={1}
+            noise={0.5}
+            glow={1}
+            transparent={true}
+            hoverStrength={2}
+            inertia={0.05}
+          />
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl opacity-60 transform rotate-12 z-10"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl opacity-60 transform -rotate-12 z-10"></div>
+        
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up">
               <h1 className="font-spartan font-bold text-5xl lg:text-6xl text-gray-900 leading-tight">
